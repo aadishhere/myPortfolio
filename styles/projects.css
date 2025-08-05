@@ -9,25 +9,25 @@
     margin-bottom: 10px;
 }
 
-.section-header h2 {
+.section-header p {
     display: block;
     width: fit-content; 
     margin: 0 0 12px;
-    padding: 0.25rem 0.25rem;
+    padding: 4px 4px;
     border-radius: 4px;
 
     background-color: var(--color-heading);
     border: 1px solid var(--color-border);
 
     text-align: left;
-    font-size: 0.75rem;
+    font-size: 14px;
     color: var(--color-text-secondary);
     text-transform: lowercase;
     letter-spacing: 1px;
 }
 
 .view-more-link {
-    font-size: 0.9rem;
+    font-size: 14px;
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
@@ -40,7 +40,7 @@
     display: grid;
     width: 100%;
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 10px;
 }
 
 .project-card {
@@ -55,7 +55,6 @@
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-color);
 }
 
 .project-thumbnail {
@@ -67,58 +66,57 @@
 }
 
 .project-info {
-    padding: 1rem;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
 }
 
 .project-title {
-    font-size: 1rem;
+    font-size: 20px;
     font-weight: 500;
-    margin: 0 0 0.5rem 0;
+    margin: 0 0 10px 0;
 }
 
 .project-description {
-    font-size: 0.75rem;
+    font-size: 14px;
     color: var(--color-text-secondary);
-    margin: 0rem;
+    margin: 0px;
     flex-grow: 1;
 }
 
 .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.25rem;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .tech-tag {
     background-color: #ede8e1;
     color: var(--color-text-secondary);
-    padding: 0.3rem 0.6rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border-radius: 6px;
+    padding: 10px 10px;
+    font-size: 12px;
+    border-radius: 8px;
 }
 
 .project-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    gap: 10px;
+    margin-top: 10px;
 }
 
 .project-link-button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.8rem;
+    gap: 10px;
+    padding: 10px 10px;
     border: 1px solid var(--color-border);
     border-radius: 8px;
     text-decoration: none;
     color: var(--color-text-secondary);
-    font-size: 0.8rem;
+    font-size: 12px;
     font-weight: 500;
     transition: all 0.2s ease;
 }
@@ -130,5 +128,5 @@
 }
 
 .project-link-button i {
-    font-size: 0.75rem;
+    font-size: 12px;
 }
