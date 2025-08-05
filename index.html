@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aadish Jain</title>
-    
+
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/navbar.css">
     <link rel="stylesheet" href="styles/intro.css">
     <link rel="stylesheet" href="styles/skills.css">
-    
+    <link rel="stylesheet" href="styles/bio.css">
+    <link rel="stylesheet" href="styles/experience.css">
+    <link rel="stylesheet" href="styles/projects.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="js/skills.js"></script>
+    <script src="js/experience.js"></script>
 </head>
+
 <body>
 
     <div class="container">
@@ -28,61 +36,229 @@
 
         <section class="intro-section">
 
-    <div class="intro-header">
-        <div class="profile-container">
-            <img src="assets/aadishjain.jpg" alt="Aadish Jain" class="profile-pic">
-            <img src="assets/thug.png" alt="Thug Glasses" class="hover-image glasses">
-        </div>
-        <div class="intro-details">
-            <h1>Hey, I'm Aadish (aa•deesh) 👋</h1>
-            <p class="status">
-                <span class="status-dot"></span>Available for work
-            </p>
-        </div>
-    </div>
-    
-    <p class="bio">
-        I'm a creative software developer specializing in UI design and crafting engaging user experiences with great attention to detail.
-    </p>
+            <div class="intro-header">
+                <div class="profile-container">
+                    <img src="assets/aadishjain.png" alt="Aadish Jain" class="profile-pic">
+                    <img src="assets/thug.png" alt="Thug Glasses" class="hover-image glasses">
+                </div>
+                <div class="intro-details">
+                    <h2>
+                        Hey, I'm iOS Developer,
+                    </h2>
+                    <h1>Aadish (aa•dee•sh)
+                        <span class="wave-emoji">👋</span>
+                    </h1>
 
-</section>
+                    <a href="mailto:aadishhere@gmail.com" class="status-link">
+                        <div class="status-text-container">
+
+                            <div class="status-text default-text">
+                                <span class="status-dot"></span>
+                                <span>available for work</span>
+                            </div>
+                            <div class="status-text hover-text">
+                                <span>reach out ↗️</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+        </section>
+
+        <section class="bio-section">
+            <p class="bio">
+                I'm a creative iOS developer specializing in UI design and crafting engaging user experiences with a
+                little attention to detail.
+            </p>
+        </section>
+
 
         <section class="skills-section">
-    <div class="skills-grid">
-        <div class="skill-card">
-            <i class="fa-solid fa-film"></i> <p>Motion</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-html5-plain"></i>
-            <p>HTML 5</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-css3-plain"></i>
-            <p>CSS</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-typescript-plain"></i>
-            <p>TypeScript</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-nextjs-original"></i>
-            <p>Next.js</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-tailwindcss-plain"></i>
-            <p>Tailwind CSS</p>
-        </div>
-        <div class="skill-card">
-            <i class="fa-solid fa-bolt"></i> <p>Supabase</p>
-        </div>
-        <div class="skill-card">
-            <i class="devicon-react-original"></i>
-            <p>React.js</p>
-        </div>
-    </div>
-</section>
+            <div class="section-heading">Skills</div>
+            <div class="skills-container">
+                <div class="skills-grid">
 
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">Swift</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">SwiftUI</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">CoreData</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">Xcode</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">Cocoapods</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">Firebase</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">Figma</div>
+                    </div>
+
+                    <div class="macos-window-card">
+                        <div class="macos-controls">
+                            <div class="control-dot red js-close-skill">
+                                <span class="close-icon">×</span>
+                            </div>
+                        </div>
+                        <div class="tech-name">JSON</div>
+                    </div>
+                </div>
+
+                <div class="skills-reset-message">
+                    <p>Really, you think that you can take my skills from me?</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="tab-container">
+            <div class="tab-controls">
+                <button class="tab-button is-active" data-tab="work">Work</button>
+                <button class="tab-button" data-tab="education">Education</button>
+            </div>
         </div>
+
+        <section class="experience-section">
+            <div class="tab-content">
+                <div class="content-panel is-active" id="work">
+
+                    <div class="experience-entry">
+                        <img src="https://via.placeholder.com/48" alt="Company Logo" class="entry-logo">
+                        <div class="entry-details-block">
+                            <p class="entry-date">May 2025 - Present</p>
+                            <h4 class="entry-title">Bluebex Software</h4>
+                            <p class="entry-subtitle">iOS Developer</p>
+                            <ul class="entry-details">
+                                <li>Developed and maintained features for large-scale enterprise applications.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-entry">
+                        <img src="https://via.placeholder.com/48" alt="Company Logo" class="entry-logo">
+                        <div class="entry-details-block">
+                            <p class="entry-date">Nov 2023 - Aug 2025</p>
+                            <h4 class="entry-title">TEDxIPSA Indore</h4>
+                            <p class="entry-subtitle">Organiser</p>
+                            <ul class="entry-details">
+                                <li>Managed event logistics and speaker coordination for a major local event.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="content-panel" id="education">
+                    <div class="experience-entry">
+                        <img src="https://via.placeholder.com/48" alt="School Logo" class="entry-logo">
+                        <div class="entry-details-block">
+                            <p class="entry-date">Nov 2021 - Jul 2025</p>
+                            <h4 class="entry-title">IPS Academy, Institute of Engineering and Science</h4>
+                            <p class="entry-subtitle">Bachelor of Technology, Computer Science</p>
+                            <ul class="entry-details">
+                                <li>Active member of the university's coding club.</li>
+                            </ul>
+                            <div class="entry-tags">
+                                <span class="tag-pill">Final Year Project</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-section">
+            <div class="section-header">
+                <h2>featured projects</h2>
+                <a href="#" class="view-more-link">view more →</a>
+            </div>
+
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="https://i.imgur.com/v11m2t9.png" alt="Project Thumbnail" class="project-thumbnail">
+                    <div class="project-info">
+                        <h3 class="project-title">TT4D</h3>
+                        <p class="project-description">
+                            Generate winning combinations, view past results, and analyze lottery trends all in one place.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TailwindCSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link-button"><i class="fa-solid fa-globe"></i>Website</a>
+                            <a href="#" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://i.imgur.com/Jz2qf9b.png" alt="Project Thumbnail" class="project-thumbnail">
+                    <div class="project-info">
+                        <h3 class="project-title">Tradingview Telegram Alerts</h3>
+                        <p class="project-description">
+                            Real-time trading alerts with chart snapshots sent to Telegram, designed to keep traders informed.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tech-tag">Docker</span>
+                            <span class="tech-tag">Fly.io</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <div class="project-links">
+                             <a href="#" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
 
 </body>
+
 </html>

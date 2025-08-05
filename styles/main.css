@@ -11,6 +11,7 @@
     --color-border: #e3d9cd;
     --shadow-color: rgba(44, 37, 30, 0.07);
     --color-status-available: #22c55e;
+    --color-heading: #eaeaea20;
 }
 
 body {
@@ -22,6 +23,6 @@ body {
 }
 
 .container {
-    max-width: 420px; 
+    max-width: 500px; 
     margin: 0 auto;
 }

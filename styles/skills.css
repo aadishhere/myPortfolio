@@ -1,47 +1,163 @@
 .skills-section {
-    margin-top: 4rem;
+    margin-top: 20px;
+}
+
+.section-heading {
+    display: block;
+    width: fit-content; 
+    margin: 0px 0px 12px;
+    padding: 0.3rem 0.3rem;
+    border-radius: 4px;
+
+    background-color: var(--color-heading);
+    border: 1px solid var(--color-border);
+
+    text-align: left;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    text-transform: lowercase;
+    letter-spacing: 1px;
+
+}
+
+.skills-container {
+    position: relative;
+    flex-grow: 1;
 }
 
 .skills-grid {
-    display: grid;
-    /* Your requirement: 4 columns */
-    grid-template-columns: repeat(4, 1fr); 
-    /* Smaller gaps to fit everything */
-    gap: 0.5rem; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.5rem;
 }
 
-.skill-card {
+.macos-window-card {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
-    border-radius: 8px; /* Smaller radius for smaller cards */
-    /* Reduced padding to fit 4 across */
-    padding: 0.75rem 0.25rem; 
-    
+    text-transform: lowercase;
+    border-radius: 12px;
+    padding: 0.75rem 0.75rem;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    gap: 0.25rem;
+    transition: all 0.25s cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform, opacity, max-width, padding, margin;
+}
+
+.macos-window-card.is-hidden {
+    transform: scale(0);
+    opacity: 0;
+    max-width: 0px;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 0;
+    margin-right: -0.6rem;
+    overflow: hidden;
+}
+
+.macos-controls {
+    display: flex;
+}
+
+.control-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.control-dot:hover {
+    transform: scale(1.15);
+}
+
+.control-dot.red {
+    background-color: #ff5f56;
+    position: relative;
+    display: flex;
     justify-content: center;
-    /* Reduced gap between icon and text */
-    gap: 0.5rem; 
-
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    align-items: center;
 }
 
-.skill-card:hover {
-    transform: translateY(-4px); /* A more subtle lift */
-    box-shadow: 0 6px 20px var(--shadow-color);
+.close-icon {
+    font-size: 10px;
+    font-weight: 700;
+    color: #9c150b;
+    opacity: 0;
+    transform: scale(1);
+    transition: 0s, 0s;
 }
 
-.skill-card i {
-    /* Smaller icons */
-    font-size: 1.5rem; 
-    color: var(--color-text);
+.control-dot.red:hover .close-icon {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.skill-card p {
-    margin: 0;
-    /* Very small font, necessary for the tight space */
-    font-size: 0.6rem; 
+.control-dot.red::before {
+    content: 'Close';
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: var(--color-text);
+    color: var(--color-background);
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.control-dot.red::after {
+    content: '';
+    position: absolute;
+    bottom: 135%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    border: 5px solid transparent;
+    border-top-color: var(--color-text);
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.control-dot.red:hover::before,
+.control-dot.red:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+.tech-name {
+    font-size: 0.75rem;
     color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.skills-reset-message {
+    text-transform: lowercase;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    color: var(--color-primary);
+    font-weight: 400;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0s;
+}
+
+.skills-container.is-resetting .skills-grid {
+    opacity: 0;
+}
+.skills-container.is-resetting .skills-reset-message {
+    opacity: 1;
 }

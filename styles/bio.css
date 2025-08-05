@@ -1,0 +1,10 @@
+.bio-section {
+    margin-top: 20px;
+}
+
+.bio {
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    text-transform: lowercase;
+    margin: 0rem;
+}

@@ -1,0 +1,116 @@
+.tab-container {
+    margin-top: 20px;
+}
+.tab-controls {
+    display: flex;
+    width: 100%;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.tab-button {
+    flex-grow: 1;
+    width: 50%;
+    padding: 0.5rem 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+}
+
+.tab-button.is-active {
+    background-color: #ede8e1;
+    color: var(--color-text);
+}
+
+.experience-section {
+    display: flex;
+    margin-top: 10px;
+    background-color: var(--color-card);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.content-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+.content-panel.is-active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.experience-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+.experience-entry:last-child {
+    margin-bottom: 0rem;
+}
+
+.entry-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--color-border);
+    flex-shrink: 0; 
+}
+
+.entry-details-block {
+    flex-grow: 1;
+}
+
+.entry-date {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 0.25rem 0;
+}
+.entry-title {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--color-text);
+}
+.entry-subtitle {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin: 0.25rem 0rem 0.25rem 0rem;
+}
+.entry-details {
+    padding-left: 1rem;
+    margin: 0rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+.entry-details li::marker {
+    color: var(--color-border);
+}
+
+.entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.tag-pill {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+}
