@@ -22,35 +22,35 @@
     align-items: center;
     gap: 0.4rem;
     color: var(--color-text-secondary);
-    margin: 0.25rem 0 0 0;
+    margin-top: 0.25rem;
 }
 
 .status .status-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--color-status-available); 
+    background-color: var(--color-status-available);
     border-radius: 50%;
 }
 
 .bio {
     color: var(--color-text-secondary);
     line-height: 1.6;
-    font-size: 0.9rem; 
-    margin: 1.5rem 0 0 0;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
 }
 
 .profile-container {
     position: relative;
-    flex-shrink: 0; 
-    width: 80px; 
+    flex-shrink: 0;
+    width: 80px;
     height: 80px;
     border-radius: 50%;
     overflow: hidden;
     cursor: pointer;
     border: 2px solid var(--color-border);
     box-shadow: 0 5px 25px var(--shadow-color);
-    
-    --glasses-tilt: -7deg; 
+    --glasses-tilt: -7deg;
 }
 
 .profile-pic {
@@ -70,7 +70,7 @@
     width: 30%;
     top: 22%;
     left: 41%;
-    transform: rotate(var(--glasses-tilt)); 
+    transform: rotate(var(--glasses-tilt));
 }
 
 .profile-container:hover .hover-image {
