@@ -2,22 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeButtons = document.querySelectorAll('.js-close-skill');
     const skillCards = document.querySelectorAll('.macos-window-card');
     const skillsContainer = document.querySelector('.skills-container');
+    let visibleCardCount = skillCards.length;
 
     closeButtons.forEach(button => {
         button.addEventListener('click', (event) => {
             const cardToHide = event.target.closest('.macos-window-card');
             
-            if (cardToHide) {
+            if (cardToHide && !cardToHide.classList.contains('is-hidden')) {
                 cardToHide.classList.add('is-hidden');
+                visibleCardCount--; 
             }
+
             checkForReset();
         });
     });
 
     function checkForReset() {
-        const visibleCards = document.querySelectorAll('.macos-window-card:not(.is-hidden)');
-
-        if (visibleCards.length === 0) {
+        if (visibleCardCount === 0) {
             skillsContainer.classList.add('is-resetting');
 
             setTimeout(() => {
@@ -25,7 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.classList.remove('is-hidden');
                 });
                 skillsContainer.classList.remove('is-resetting');
-            }, 4000);
+                
+                visibleCardCount = skillCards.length;
+            }, 4500);
         }
     }
 });
