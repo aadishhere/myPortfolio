@@ -57,8 +57,8 @@
             </div>
             <div class="intro-image-container">
                 <div class="profile-container">
-                    <img src="assets/aadishjain.png" alt="Aadish Jain" class="profile-pic">
-                    <img src="assets/glasses.png" alt="Thug Glasses" class="hover-image glasses">
+                    <img src="assets/aadishjain.webp" alt="Aadish Jain" class="profile-pic">
+                    <img src="assets/glasses.webp" alt="Thug Glasses" class="hover-image glasses">
                 </div>
             </div>
         </section>
@@ -159,7 +159,7 @@
                 <div class="content-panel is-active" id="work">
 
                     <div class="experience-entry">
-                        <img src="assets/bluebex.jpeg" alt="Company Logo" class="entry-logo">
+                        <img src="assets/bluebex.webp" alt="Company Logo" class="entry-logo">
                         <div class="entry-details-block">
                             <p class="entry-date">May 2025 - Present</p>
                             <h4 class="entry-title">Bluebex Software</h4>
@@ -171,7 +171,7 @@
                     </div>
 
                     <div class="experience-entry">
-                        <img src="assets/tedxipsa.jpeg" alt="Company Logo" class="entry-logo">
+                        <img src="assets/tedxipsa.webp" alt="Company Logo" class="entry-logo">
                         <div class="entry-details-block">
                             <p class="entry-date">Nov 2023 - Aug 2025</p>
                             <h4 class="entry-title">TEDxIPSA Indore</h4>
@@ -186,7 +186,7 @@
 
                 <div class="content-panel" id="education">
                     <div class="experience-entry">
-                        <img src="assets/ipsacademy.jpeg" alt="School Logo" class="entry-logo">
+                        <img src="assets/ipsacademy.webp" alt="School Logo" class="entry-logo">
                         <div class="entry-details-block">
                             <p class="entry-date">Nov 2021 - Jul 2025</p>
                             <h4 class="entry-title">IPS Academy, Institute of Engineering and Science</h4>
@@ -225,72 +225,13 @@
             </div>
         </footer>
     </div>
-<script type="module">
-      // Import the functions you need from the SDKs you need
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-      import { getFirestore, collection, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
-      // Your web app's Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
-        authDomain: "myportfolio-aadishhere.firebaseapp.com",
-        projectId: "myportfolio-aadishhere",
-        storageBucket: "myportfolio-aadishhere.appspot.com",
-        messagingSenderId: "483800227478",
-        appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
-      };
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
 
-      // Initialize Firebase
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+    <script src="js/firebase-config.js"></script>
 
-      // --- Your main.js logic is now here ---
-      async function loadProjects() {
-          const projectsGrid = document.querySelector('.projects-grid');
-          if (!projectsGrid) return;
-
-          try {
-              const projectsQuery = collection(db, 'projects');
-              const q = query(projectsQuery, orderBy('createdAt', 'desc'), limit(4));
-              const projectsSnapshot = await getDocs(q);
-              
-              let projectsHTML = '';
-
-              if (projectsSnapshot.empty) {
-                  projectsGrid.innerHTML = '<p>No projects found.</p>';
-                  return;
-              }
-
-              projectsSnapshot.forEach(doc => {
-                  const project = doc.data();
-                  const tagsHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
-                  
-                  projectsHTML += `
-                      <div class="project-card">
-                          <img src="${project.imageUrl}" alt="${project.title}" class="project-thumbnail">
-                          <div class="project-info">
-                              <h3 class="project-title">${project.title}</h3>
-                              <p class="project-description">${project.description}</p>
-                              <div class="project-tags">${tagsHTML}</div>
-                              <div class="project-links">
-                                  <a href="${project.sourceUrl}" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
-                              </div>
-                          </div>
-                      </div>
-                  `;
-              });
-
-              projectsGrid.innerHTML = projectsHTML;
-
-          } catch (error) {
-              console.error("Error loading projects:", error);
-              projectsGrid.innerHTML = '<p>Could not load projects at this time.</p>';
-          }
-      }
-      
-      loadProjects();
-
-    </script>
+    <script src="js/main.js"></script>
 
     <script src="js/skills.js"></script>
     <script src="js/experience.js"></script>
