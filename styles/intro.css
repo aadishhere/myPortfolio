@@ -1,45 +1,44 @@
-.intro-section {
+.intro-header {
     display: flex;
-    gap: 1rem; 
+    align-items: center;
+    gap: 1rem;
 }
 
-.intro-text {
+.intro-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.intro-text h1 {
+.intro-details h1 {
     font-weight: 500;
     font-size: 1.25rem;
-    margin-top: 0rem;
-    margin-bottom: 0rem;
+    margin: 0;
 }
 
-.intro-text .status {
-    font-size: 0.75rem;
+.intro-details .status {
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
+    gap: 0.4rem;
     color: var(--color-text-secondary);
-    margin-top: 0rem;
-    margin-bottom: 0rem;
+    margin: 0.25rem 0 0 0;
 }
 
 .status .status-dot {
-    width: 2px;
-    height: 2px;
-    background-color: var(--color-primary);
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-status-available); 
+    border-radius: 50%;
 }
 
-.intro-text .bio {
+.bio {
     color: var(--color-text-secondary);
-    line-height: 1.5;
-    font-size: 0.75rem; 
-    margin-top: 0rem;
-    margin-bottom: 0rem; /* Adjusted margin */
+    line-height: 1.6;
+    font-size: 0.9rem; 
+    margin: 1.5rem 0 0 0;
 }
 
-/* === INTERACTIVE PROFILE PICTURE === */
 .profile-container {
     position: relative;
     flex-shrink: 0; 
