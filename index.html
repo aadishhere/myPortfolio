@@ -225,13 +225,72 @@
             </div>
         </footer>
     </div>
+<script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+      import { getFirestore, collection, getDocs, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+      // Your web app's Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
+        authDomain: "myportfolio-aadishhere.firebaseapp.com",
+        projectId: "myportfolio-aadishhere",
+        storageBucket: "myportfolio-aadishhere.appspot.com",
+        messagingSenderId: "483800227478",
+        appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
+      };
 
-    <script src="js/firebase-config.js"></script>
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
-    <script src="js/main.js"></script>
+      // --- Your main.js logic is now here ---
+      async function loadProjects() {
+          const projectsGrid = document.querySelector('.projects-grid');
+          if (!projectsGrid) return;
+
+          try {
+              const projectsQuery = collection(db, 'projects');
+              const q = query(projectsQuery, orderBy('createdAt', 'desc'), limit(4));
+              const projectsSnapshot = await getDocs(q);
+              
+              let projectsHTML = '';
+
+              if (projectsSnapshot.empty) {
+                  projectsGrid.innerHTML = '<p>No projects found.</p>';
+                  return;
+              }
+
+              projectsSnapshot.forEach(doc => {
+                  const project = doc.data();
+                  const tagsHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+                  
+                  projectsHTML += `
+                      <div class="project-card">
+                          <img src="${project.imageUrl}" alt="${project.title}" class="project-thumbnail">
+                          <div class="project-info">
+                              <h3 class="project-title">${project.title}</h3>
+                              <p class="project-description">${project.description}</p>
+                              <div class="project-tags">${tagsHTML}</div>
+                              <div class="project-links">
+                                  <a href="${project.sourceUrl}" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
+                              </div>
+                          </div>
+                      </div>
+                  `;
+              });
+
+              projectsGrid.innerHTML = projectsHTML;
+
+          } catch (error) {
+              console.error("Error loading projects:", error);
+              projectsGrid.innerHTML = '<p>Could not load projects at this time.</p>';
+          }
+      }
+      
+      loadProjects();
+
+    </script>
 
     <script src="js/skills.js"></script>
     <script src="js/experience.js"></script>
