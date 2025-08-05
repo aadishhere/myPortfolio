@@ -12,9 +12,12 @@
 
     <link rel="stylesheet" href="styles/main.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" media="print" onload="this.media='all'">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"
+        media="print" onload="this.media='all'">
+    <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" media="print"
+        onload="this.media='all'">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet"
+        media="print" onload="this.media='all'">
 </head>
 
 <body>
@@ -26,7 +29,6 @@
                 <a href="#">blog</a>
                 <a href="#">projects</a>
             </div>
-
             <div class="social-links">
                 <a href="https://github.com/your-username" target="_blank"><i class="fa-brands fa-github"></i></a>
                 <a href="https://linkedin.com/in/your-username" target="_blank"><i
@@ -57,7 +59,7 @@
             </div>
             <div class="intro-image-container">
                 <div class="profile-container">
-                    <img src="assets/aadishjain.webp" alt="Aadish Jain" class="profile-pic">
+                    <img src="assets/aadishjain.webp" alt="Aadish Jain" class="profile-pic" fetchpriority="high">
                     <img src="assets/glasses.webp" alt="Thug Glasses" class="hover-image glasses">
                 </div>
             </div>
@@ -211,9 +213,9 @@
             </div>
 
             <div class="projects-grid">
-
-            </div>
+                </div>
         </section>
+
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
@@ -226,12 +228,73 @@
         </footer>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore-compat.js"></script>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
-    <script src="js/firebase-config.js"></script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
+            authDomain: "myportfolio-aadishhere.firebaseapp.com",
+            projectId: "myportfolio-aadishhere",
+            storageBucket: "myportfolio-aadishhere.appspot.com",
+            messagingSenderId: "483800227478",
+            appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
+        };
 
-    <script src="js/main.js"></script>
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // --- Your main.js logic is now here ---
+        async function loadProjects() {
+            const projectsGrid = document.querySelector('.projects-grid');
+            if (!projectsGrid) return;
+
+            try {
+                // FIX: Correctly using the 'query' function for the modular SDK
+                const projectsQuery = collection(db, 'projects');
+                const q = query(projectsQuery, orderBy('createdAt', 'desc'), limit(4));
+                const projectsSnapshot = await getDocs(q);
+                
+                let projectsHTML = '';
+
+                if (projectsSnapshot.empty) {
+                    projectsGrid.innerHTML = '<p>No projects found.</p>';
+                    return;
+                }
+
+                projectsSnapshot.forEach(doc => {
+                    const project = doc.data();
+                    const tagsHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
+                    
+                    projectsHTML += `
+                        <div class="project-card">
+                            <img src="${project.imageUrl}" alt="${project.title}" class="project-thumbnail">
+                            <div class="project-info">
+                                <h3 class="project-title">${project.title}</h3>
+                                <p class="project-description">${project.description}</p>
+                                <div class="project-tags">${tagsHTML}</div>
+                                <div class="project-links">
+                                    <a href="${project.sourceUrl}" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                projectsGrid.innerHTML = projectsHTML;
+
+            } catch (error) {
+                console.error("Error loading projects:", error);
+                projectsGrid.innerHTML = '<p>Could not load projects at this time.</p>';
+            }
+        }
+    
+        loadProjects();
+
+    </script>
 
     <script src="js/skills.js"></script>
     <script src="js/experience.js"></script>
