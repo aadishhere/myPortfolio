@@ -1,0 +1,10 @@
+# Allow all friendly search engine bots to crawl the entire site.
+User-agent: *
+Allow: /
+
+# Disallow bots from crawling specific private directories if you ever add them.
+# For now, we allow everything.
+# Example: Disallow: /private/
+
+# Point all search engines to the location of your sitemap for easy discovery.
+Sitemap: https://www.aadishjain.com/sitemap.xml
