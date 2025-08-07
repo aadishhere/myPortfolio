@@ -17,6 +17,20 @@ body {
     margin: 0;
     padding: 16px;
 }
+body.dark-mode {
+    --color-background: #121212;
+    --color-text: #EAEAEA;
+    --color-text-secondary: #A0A0A0;
+    --color-primary: #BB86FC;
+    --color-card: #1E1E1E;
+    --color-border: #383838;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --color-status-available: #4CAF50;
+    --color-heading: rgba(255, 255, 255, 0.05);
+}
+body, .project-card, .macos-window-card, .experience-section, .tab-controls, .tab-button.is-active {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
 .container {
     max-width: 500px; 
     margin: 0 auto;
