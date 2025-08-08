@@ -160,3 +160,75 @@ body::before {
     z-index: -1;
     pointer-events: none;
 }
+
+/* === Interactive Constellation === */
+@keyframes pulsate {
+    0% { transform: scale(1); box-shadow: 0 0 10px rgba(161, 130, 92, 0.3); }
+    50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(161, 130, 92, 0.7); }
+    100% { transform: scale(1); box-shadow: 0 0 10px rgba(161, 130, 92, 0.3); }
+}
+
+@keyframes draw-line {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
+}
+
+.constellation-container {
+    position: relative;
+    height: 150px; /* The canvas for your constellation */
+    margin: 0 0 24px 0;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background-color: var(--color-card);
+}
+
+.constellation-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+.constellation-line {
+    stroke: var(--color-primary);
+    stroke-width: 1.5px;
+    stroke-dasharray: 1000; /* For the drawing animation */
+    animation: draw-line 1s ease-out forwards;
+}
+
+.star {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    cursor: pointer;
+    animation: pulsate 3s infinite ease-in-out;
+}
+
+.star-label {
+    position: absolute;
+    bottom: 150%;
+    left: 50%;
+    transform: translateX(-50%);
+    
+    background-color: var(--color-text);
+    color: var(--color-background);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    
+    /* Hidden by default */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.star:hover .star-label {
+    opacity: 1;
+    visibility: visible;
+}
