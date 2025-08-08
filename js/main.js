@@ -47,3 +47,15 @@ async function loadProjects() {
 document.addEventListener('DOMContentLoaded', () => {
     loadProjects();
 });
+
+// js/bookshelf.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    const books = document.querySelectorAll('.book');
+
+    books.forEach(book => {
+        book.addEventListener('click', () => {
+            book.classList.toggle('is-flipped');
+        });
+    });
+});
