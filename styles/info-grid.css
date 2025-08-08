@@ -1,17 +1,20 @@
-/* myPortfolio/styles/info-grid.css */
 
-.info-grid-section {
+.showcase-section {
     margin-top: 48px;
-}
-
-/* The two-column grid container */
-.info-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Two equal columns */
-    gap: 16px; /* Space between the two cards */
+    gap: 16px;
+    align-items: start; /* Aligns items to the top */
 }
 
-/* Styling for each card in the grid */
+
+/* --- Left Column: Live Info --- */
+.live-info-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .info-card {
     background-color: var(--color-card);
     border: 1px solid var(--color-border);
@@ -23,67 +26,108 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text-secondary);
-    margin: 0 0 16px 0;
+    margin: 0 0 8px 0;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-
-/* --- Left Card: Live Status --- */
-.live-status-item {
-    margin-bottom: 12px;
-}
-.live-status-item:last-child {
-    margin-bottom: 0;
-}
-.status-title {
-    font-size: 14px;
-    color: var(--color-text-secondary);
-    margin: 0 0 4px 0;
-}
-.status-value {
-    font-size: 16px;
+.info-card p {
+    font-size: 24px;
     font-weight: 500;
     color: var(--color-text);
     margin: 0;
 }
+
 #live-focus {
     transition: opacity 0.3s ease-in-out;
 }
+
 #live-focus.fade-out {
     opacity: 0;
 }
 
 
-/* --- Right Card: Book Recommendations --- */
-.book-list {
+/* --- Right Column: 3D Bookshelf --- */
+.bookshelf-column {
+    perspective: 1500px; /* 3D space */
+    padding-top: 32px;
+}
+
+.bookshelf {
+    position: relative;
+    width: 100%;
+    height: 200px;
     display: flex;
-    flex-direction: column;
-    gap: 12px;
+    justify-content: center;
+    align-items: flex-end;
+    transform-style: preserve-3d;
 }
-.book-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: var(--color-text);
-    transition: background-color 0.2s ease;
-    padding: 8px;
-    border-radius: 8px;
-}
-.book-item:hover {
-    background-color: var(--color-background);
-}
-.book-item img {
-    width: 40px;
-    height: 60px;
-    object-fit: cover;
+
+.shelf {
+    position: absolute;
+    bottom: 0;
+    width: 90%;
+    height: 15px;
+    background-color: #8B4513;
     border-radius: 4px;
-    flex-shrink: 0;
+    transform: rotateX(80deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
 }
-.book-item p {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.4;
-    margin: 0;
+
+.book {
+    position: relative;
+    width: 40px;
+    height: 150px;
+    margin: 0 8px;
+    transform-style: preserve-3d;
+    transform: rotateY(-30deg);
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+}
+
+.book:hover {
+    transform: rotateY(-20deg) translateY(-20px) translateZ(10px) scale(1.05);
+}
+
+.book.is-flipped {
+    transform: rotateY(-180deg) translateY(-20px) scale(1.1);
+}
+
+.book-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+.book-front {
+    transform: translateZ(20px);
+}
+.book-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-back {
+    transform: rotateY(180deg) translateZ(20px);
+    background-color: var(--color-background);
+    padding: 10px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--color-text);
+}
+.book-back h4 { font-size: 12px; margin: 0 0 5px 0; }
+.book-back a { display: inline-block; margin-top: 10px; padding: 4px 8px; background-color: var(--color-primary); color: white; text-decoration: none; border-radius: 4px; }
+
+.book-spine {
+    width: 40px;
+    height: 100%;
+    transform: rotateY(-90deg) translateX(-20px);
+    transform-origin: left;
+    background-color: #ddd;
+    border: 1px solid #ccc;
+    font-size: 10px;
 }
