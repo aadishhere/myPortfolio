@@ -1,39 +1,21 @@
-// js/info-grid.js
 
 document.addEventListener('DOMContentLoaded', () => {
+    // --- Live Status Logic ---
     const localTimeElement = document.getElementById('live-time');
     const focusStatusElement = document.getElementById('live-focus');
 
-    // --- Live Clock Logic ---
     function updateTime() {
         if (!localTimeElement) return;
-
-        const options = {
-            timeZone: 'Asia/Kolkata',
-            hour: 'numeric',
-            minute: '2-digit',
-            hour12: true
-        };
-        const formatter = new Intl.DateTimeFormat('en-US', options);
-        const timeString = formatter.format(new Date());
-
-        localTimeElement.textContent = timeString;
+        const options = { timeZone: 'Asia/Kolkata', hour: 'numeric', minute: '2-digit', second: '2-digit', hour12: true };
+        localTimeElement.textContent = new Intl.DateTimeFormat('en-US', options).format(new Date());
     }
     updateTime();
     setInterval(updateTime, 1000);
 
-    // --- Rotating Focus Status Logic ---
-    const focusStatuses = [
-        "Building Cool Apps",
-        "Writing Poetry",
-        "Exploring Swift UI",
-        "Crafting User Interfaces"
-    ];
+    const focusStatuses = ["Building Cool Apps", "Writing Poetry", "Exploring SwiftUI"];
     let currentStatusIndex = 0;
-
     function updateFocusStatus() {
         if (!focusStatusElement) return;
-
         focusStatusElement.classList.add('fade-out');
         setTimeout(() => {
             currentStatusIndex = (currentStatusIndex + 1) % focusStatuses.length;
@@ -42,4 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 300);
     }
     setInterval(updateFocusStatus, 5000);
+
+    // --- Bookshelf Logic ---
+    const books = document.querySelectorAll('.book');
+    books.forEach(book => {
+        book.addEventListener('click', () => {
+            book.classList.toggle('is-flipped');
+        });
+    });
 });
