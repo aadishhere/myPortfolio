@@ -71,6 +71,7 @@
         <link rel="preload" fetchpriority="high" as="image" href="assets/aadishjain.webp" type="image/webp">
 
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/guestbook.css">
 
         <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
             as="style">
@@ -280,6 +281,17 @@
             </div>
         </section>
 
+        <section class="guestbook-section">
+            <h2 class="section-header-title">guestbook</h2>
+            <form id="guestbook-form" class="guestbook-form">
+                <input type="text" id="guest-name" placeholder="Your Name" required maxlength="50">
+                <textarea id="guest-message" placeholder="Leave a message..." required maxlength="280"></textarea>
+                <button type="submit">Sign Guestbook</button>
+            </form>
+            <div id="guestbook-messages" class="guestbook-messages">
+                </div>
+        </section>
+
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-left">
@@ -357,6 +369,7 @@
     <script src="js/skills.js"></script>
     <script src="js/experience.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/guestbook.js" type="module"></script>
 
     <script src="https://kit.fontawesome.com/ab21585358.js" crossorigin="anonymous" defer></script>
 </body>
