@@ -1,15 +1,16 @@
+// js/guestbook.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
-  const firebaseConfig = {
+// Your web app's Firebase configuration
+const firebaseConfig = {
     apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
     authDomain: "myportfolio-aadishhere.firebaseapp.com",
     projectId: "myportfolio-aadishhere",
-    storageBucket: "myportfolio-aadishhere.firebasestorage.app",
+    storageBucket: "myportfolio-aadishhere.appspot.com",
     messagingSenderId: "483800227478",
-    appId: "1:483800227478:web:994bda2c2d41a7377eecb7",
-    measurementId: "G-WZ3WLWDVK5"
-  };
+    appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
+};
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
@@ -31,17 +32,20 @@ if (guestbookForm) {
             submitButton.disabled = true;
             submitButton.textContent = 'Submitting...';
             try {
+                // Add the new message to the 'guestbook' collection
                 await addDoc(collection(db, 'guestbook'), {
                     name: name,
                     message: message,
                     createdAt: serverTimestamp()
                 });
+                // Clear the form fields after successful submission
                 nameInput.value = '';
                 messageInput.value = '';
             } catch (error) {
                 console.error("Error adding document: ", error);
                 alert("Sorry, there was an error submitting your message.");
             } finally {
+                // Re-enable the button
                 submitButton.disabled = false;
                 submitButton.textContent = 'Sign Guestbook';
             }
@@ -55,10 +59,11 @@ const messagesContainer = document.getElementById('guestbook-messages');
 if (messagesContainer) {
     const messagesQuery = query(collection(db, 'guestbook'), orderBy('createdAt', 'desc'));
 
+    // onSnapshot listens for real-time updates
     onSnapshot(messagesQuery, (snapshot) => {
         let messagesHTML = '';
         if (snapshot.empty) {
-            messagesContainer.innerHTML = '<p>Be the first to sign the guestbook!</p>';
+            messagesContainer.innerHTML = '<p style="text-align: center; color: var(--color-text-secondary);">Be the first to sign the guestbook!</p>';
             return;
         }
 
@@ -80,15 +85,9 @@ if (messagesContainer) {
     });
 }
 
-// Simple function to prevent HTML injection attacks
+// Simple function to prevent malicious HTML from being injected into your guestbook
 function escapeHTML(str) {
-    return str.replace(/[&<>'"]/g, 
-      tag => ({
-          '&': '&amp;',
-          '<': '&lt;',
-          '>': '&gt;',
-          "'": '&#39;',
-          '"': '&quot;'
-        }[tag] || tag)
-    );
+    const p = document.createElement('p');
+    p.appendChild(document.createTextNode(str));
+    return p.innerHTML;
 }
