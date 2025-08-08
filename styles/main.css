@@ -142,3 +142,21 @@ body, .project-card, .macos-window-card, .experience-section, .tab-controls, .ta
 .footer-left p, .footer-right p { margin: 0; font-size: 14px; color: var(--color-text-secondary); }
 .footer-left a { color: var(--color-text-secondary); text-decoration: none; transition: color 0.2s ease; }
 .footer-left a:hover { color: var(--color-primary); }
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(161, 130, 92, 0.15),
+        transparent 80%
+    );
+
+    z-index: -1;
+    pointer-events: none;
+}
