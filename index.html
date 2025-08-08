@@ -72,7 +72,7 @@
 
         <link rel="stylesheet" href="styles/main.css">
         <link rel="stylesheet" href="styles/guestbook.css">
-        <link rel="stylesheet" href="styles/live-activity.css">
+        <link rel="stylesheet" href="styles/info-grid.css">
 
 <link rel="stylesheet" href="styles/footer-widgets.css">
 
@@ -284,44 +284,35 @@
             </div>
         </section>
 
-        <div class="footer-widgets-container">
-        <div class="footer-widget live-status-widget">
-            <div class="status-indicator"></div>
-            <div class="widget-text">
-                <p class="widget-title">Local Time</p>
-                <p id="local-time" class="widget-value">--:--:-- --</p>
-            </div>
-            <div class="widget-divider"></div>
-            <div class="widget-text">
-                <p class="widget-title">Focus</p>
-                <p id="focus-status" class="widget-value">Building Cool Apps</p>
-            </div>
-        </div>
+<section class="info-grid-section">
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Live Status</h3>
+                    <div class="live-status-item">
+                        <p class="status-title">Local Time</p>
+                        <p id="live-time" class="status-value">--:-- --</p>
+                    </div>
+                    <div class="live-status-item">
+                        <p class="status-title">Focus</p>
+                        <p id="live-focus" class="status-value">Building Cool Apps</p>
+                    </div>
+                </div>
 
-        <div class="footer-widget book-recs-widget">
-            <p class="widget-title">Recommended Reading</p>
-            <div class="book-scroller">
-                <a href="#" target="_blank" class="book-cover" title="Book Title 1">
-                    <img src="https://via.placeholder.com/60x90" alt="Book Cover 1">
-                </a>
-                <a href="#" target="_blank" class="book-cover" title="Book Title 2">
-                    <img src="https://via.placeholder.com/60x90" alt="Book Cover 2">
-                </a>
-                <a href="#" target="_blank" class="book-cover" title="Book Title 3">
-                    <img src="https://via.placeholder.com/60x90" alt="Book Cover 3">
-                </a>
-                <a href="#" target="_blank" class="book-cover" title="Book Title 4">
-                    <img src="https://via.placeholder.com/60x90" alt="Book Cover 4">
-                </a>
-                <a href="#" target="_blank" class="book-cover" title="Book Title 5">
-                    <img src="https://via.placeholder.com/60x90" alt="Book Cover 5">
-                </a>
+                <div class="info-card">
+                    <h3>Recommended Reading</h3>
+                    <div class="book-list">
+                        <a href="https://www.amazon.in/dp/0061122416" target="_blank" class="book-item">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463l/18144590.jpg" alt="The Alchemist">
+                            <p>The Alchemist by Paulo Coelho</p>
+                        </a>
+                        <a href="https://www.amazon.in/dp/1400034779" target="_blank" class="book-item">
+                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1587157873l/53346452.jpg" alt="The Prophet">
+                            <p>The Prophet by Kahlil Gibran</p>
+                        </a>
+                        </div>
+                </div>
             </div>
-        </div>
-    </div>
-
-
-    <script src="js/footer-widgets.js"></script>
+        </section>
 
     </body>
 
@@ -414,7 +405,7 @@
     <script src="js/experience.js"></script>
     <script src="js/theme.js"></script>
     <script src="js/guestbook.js" type="module"></script>
-    <script src="js/bookshelf.js"></script>
+    <script src="js/info-grid.js"></script>
 
     <script src="https://kit.fontawesome.com/ab21585358.js" crossorigin="anonymous" defer></script>
 </body>
