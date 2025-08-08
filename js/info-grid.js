@@ -1,8 +1,8 @@
-// js/footer-widgets.js
+// js/info-grid.js
 
 document.addEventListener('DOMContentLoaded', () => {
-    const localTimeElement = document.getElementById('local-time');
-    const focusStatusElement = document.getElementById('focus-status');
+    const localTimeElement = document.getElementById('live-time');
+    const focusStatusElement = document.getElementById('live-focus');
 
     // --- Live Clock Logic ---
     function updateTime() {
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             timeZone: 'Asia/Kolkata',
             hour: 'numeric',
             minute: '2-digit',
-            second: '2-digit',
             hour12: true
         };
         const formatter = new Intl.DateTimeFormat('en-US', options);
@@ -20,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         localTimeElement.textContent = timeString;
     }
-
     updateTime();
     setInterval(updateTime, 1000);
 
@@ -29,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "Building Cool Apps",
         "Writing Poetry",
         "Exploring Swift UI",
-        "Crafting User Interfaces",
-        "Working on a watch company"
+        "Crafting User Interfaces"
     ];
     let currentStatusIndex = 0;
 
@@ -38,13 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!focusStatusElement) return;
 
         focusStatusElement.classList.add('fade-out');
-
         setTimeout(() => {
             currentStatusIndex = (currentStatusIndex + 1) % focusStatuses.length;
             focusStatusElement.textContent = focusStatuses[currentStatusIndex];
             focusStatusElement.classList.remove('fade-out');
         }, 300);
     }
-
     setInterval(updateFocusStatus, 5000);
 });
