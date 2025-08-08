@@ -1,0 +1,93 @@
+/* myPortfolio/styles/footer-widgets.css */
+
+/* This is the main container that holds both widgets */
+.footer-widgets-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    /* Lays out the two widgets on opposite sides */
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    
+    padding: 24px;
+    box-sizing: border-box; /* Ensures padding is included in the width */
+    pointer-events: none; /* Allows clicks to pass through empty areas */
+}
+
+/* Base style for both individual widgets */
+.footer-widget {
+    pointer-events: auto; /* Makes the widgets themselves clickable */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    /* The 'pill' shape and glass effect */
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    padding: 8px 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+
+    /* Animation */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideInUp 0.5s ease 1s forwards;
+}
+
+/* Light mode adjustments */
+body:not(.dark-mode) .footer-widget {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-text);
+}
+
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- Left Widget: Live Status --- */
+.status-indicator {
+    width: 6px;
+    height: 6px;
+    background-color: #34D399;
+    border-radius: 50%;
+}
+.widget-text { display: flex; align-items: center; gap: 8px; }
+.widget-title { opacity: 0.6; }
+.widget-value { font-weight: 500; }
+.widget-divider { width: 1px; height: 12px; background-color: currentColor; opacity: 0.2; }
+#focus-status { transition: opacity 0.3s ease-in-out; }
+#focus-status.fade-out { opacity: 0; }
+
+
+/* --- Right Widget: Book Recommendations --- */
+.book-recs-widget {
+    gap: 10px;
+}
+.book-scroller {
+    display: flex;
+    gap: 8px;
+}
+.book-cover img {
+    width: 30px;
+    height: 45px;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    transition: transform 0.2s ease;
+}
+.book-cover:hover img {
+    transform: scale(1.1) translateY(-2px);
+}
