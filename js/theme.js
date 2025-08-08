@@ -24,3 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('theme', newTheme);
     });
 });
+
+document.addEventListener('mousemove', (e) => {
+    document.documentElement.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.documentElement.style.setProperty('--mouse-y', `${e.clientY}px`);
+});
