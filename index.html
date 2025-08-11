@@ -2,20 +2,17 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadish Jain | iOS Developer </title>
 
-        <title>Aadish Jain | iOS Developer </title>
+    <meta name="description"
+        content="The personal portfolio of Aadish Jain, a creative iOS developer from Indore, India, specializing in building engaging mobile user experiences with Swift and SwiftUI.">
 
-        <meta name="description"
-            content="The personal portfolio of Aadish Jain, a creative iOS developer from Indore, India, specializing in building engaging mobile user experiences with Swift and SwiftUI.">
+    <meta name="keywords" content="Aadish Jain, iOS Developer, Swift, SwiftUI, Mobile App Developer, Portfolio, Indore">
 
-        <meta name="keywords"
-            content="Aadish Jain, iOS Developer, Swift, SwiftUI, Mobile App Developer, Portfolio, Indore">
-
-        <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
@@ -65,289 +62,241 @@
   }
 }
     </script>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        <link rel="preload" fetchpriority="high" as="image" href="assets/aadishjain.webp" type="image/webp">
 
-        <link rel="stylesheet" href="styles/main.css">
-        <link rel="stylesheet" href="styles/guestbook.css">
-        <link rel="stylesheet" href="styles/info-grid.css">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<link rel="stylesheet" href="styles/footer-widgets.css">
-
-        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-            as="style">
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet"
-            media="print" onload="this.media='all'">
-
-        <link rel="preload" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" as="style">
-        <link href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" rel="stylesheet" media="print"
-            onload="this.media='all'">
-    </head>
+</head>
 
 <body>
-    <div class="container">
 
-        <nav class="navbar">
-            <div class="page-links">
-                <a href="#">home</a>
-                <a href="#">blog</a>
-                <a href="#">projects</a>
+    <div class="dynamic-island" id="dynamic-island">
+        <div class="initial-content">
+            <div class="left">
+                <img src="assets/aadishjain.webp" alt="Profile" class="profile-pic">
             </div>
-            <div class="social-links">
-                <a href="https://github.com/aadishhere" target="_blank" aria-label="GitHub"><i
-                        class="fa-brands fa-github"></i></a>
-                <a href="https://linkedin.com/in/aadishhere" target="_blank" aria-label="LinkedIn"><i
-                        class="fa-brands fa-linkedin"></i></a>
-                <a href="https://instagram.com/aadishhere" target="_blank" aria-label="Instagram"><i
-                        class="fa-brands fa-instagram"></i></a>
-                <i class="fa-regular fa-moon theme-icon"></i>
+        </div>
+        <div class="expanded-content" id="work-prompt">
+            <div class="prompt-text">
+                <p>Would you like to work with me?</p>
             </div>
-        </nav>
-
-        <section class="intro-section">
-            <div class="intro-text-content">
-                <h1 class="intro-heading">Hey, I'm Aadish (aa•dee•sh) <span class="wave-emoji">👋</span></h1>
-                <p class="intro-subtitle">iOS developer from 🇮🇳 India</p>
-                <p class="intro-bio">
-                    I'm a creative iOS developer specializing in UI design and crafting engaging user experiences with a
-                    little attention to detail.
-                </p>
-                <div class="intro-links">
-                    <a href="#" class="text-link-button">
-                        <i class="fa-solid fa-download"></i>
-                        <span>Resume</span>
-                    </a>
-                    <a href="mailto:aadishhere@gmail.com" class="text-link-button" title="Email Me"><i
-                            class="fa-solid fa-envelope"></i>
-                        <span>Email Me</span>
-                    </a>
-                </div>
+            <div class="prompt-actions">
+                <a href="mailto:aadishhere@gmail.com" class="action-button email" aria-label="Email Me">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+                <a href="tel:+918770554511" download class="action-button call" aria-label="Call Me">
+                    <i class="fa-solid fa-phone"></i>
+                </a>
             </div>
-            <div class="intro-image-container">
-                <div class="profile-container">
-                    <img src="assets/aadishjain.webp" alt="Aadish Jain" class="profile-pic" fetchpriority="high">
-                    <img src="assets/glasses.webp" alt="Thug Glasses" class="hover-image glasses">
-                </div>
+        </div>
+        <div class="expanded-content" id="skills-reset-prompt">
+            <p>Really? You think you can take my skills away from me?</p>
+        </div>
+    </div>
+
+    <nav class="main-nav">
+        <div class="header-nav left-nav">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+            <a href="projects.html">Projects</a>
+        </div>
+        <div class="header-nav right-nav">
+            <a href="https://github.com/aadishhere" target="_blank" aria-label="GitHub"><i
+                    class="fa-brands fa-github"></i></a>
+            <a href="https://linkedin.com/in/aadishhere" target="_blank" aria-label="LinkedIn"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://instagram.com/aadishhere" target="_blank" aria-label="Instagram"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <i class="fa-regular fa-moon theme-icon"></i>
+        </div>
+    </nav>
+
+    <main class="widget-container">
+        <div class="info-widget-row">
+            <div class="widget picture-widget">
+                <img src="assets/aadishjain.webp" alt="Aadish Jain" fetchpriority="high">
+                <img src="assets/glasses.webp" alt="Glasses" class="hover-image glasses">
             </div>
-        </section>
 
-        <section class="skills-section">
-            <h2 class="section-header-title">skills</h2>
-            <div class="skills-container">
-                <div class="skills-grid">
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">Swift</div>
+            <div class="vertical-stack-column">
+                <div class="horizontal-stack-column">
+                    <div class="widget widget-1x1 widget-row-layout">
+                        <a href="assets/resume.pdf" download class="info-button">
+                            <i class="fa-solid fa-file"></i>
+                            <span>resume</span>
+                        </a>
                     </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">SwiftUI</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">CoreData</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">Xcode</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">Cocoapods</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">Firebase</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">Figma</div>
-                    </div>
-
-                    <div class="macos-window-card">
-                        <div class="macos-controls">
-                            <div class="control-dot red js-close-skill">
-                                <span class="close-icon">×</span>
-                            </div>
-                        </div>
-                        <div class="tech-name">JSON</div>
+                    <div class="widget widget-1x1 widget-row-layout">
+                        <a href="mailto:aadishhere@gmail.com" class="info-button">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span>email me</span>
+                        </a>
                     </div>
                 </div>
-
-                <div class="skills-reset-message">
-                    <p>Really, you think that you can take my skills from me?</p>
+                <div class="widget widget-1x2 status-widget">
+                    <p class="widget-title">STATUS</p>
+                    <div class="status-indicator">
+                        <div class="status-dot available"></div>
+                        <span class="status-text">Available</span>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <div class="tab-container">
-            <div class="tab-controls">
-                <button class="tab-button is-active" data-tab="work">Work</button>
-                <button class="tab-button" data-tab="education">Education</button>
+        </div>
+        <div class="widget widget-2x4">
+            <div class="widget-content">
+                <p class="widget-title">iOS developer from 🇮🇳 India</p>
+                <h1 class="widget-heading">Hey, I'm Aadish (aa•dee•sh)<span class="wave-emoji">👋</span></h1>
+                <p class="widget-description">I'm a creative iOS developer specializing in UI design and crafting
+                    engaging user experiences with a little attention to detail.</p>
             </div>
         </div>
 
-        <section class="experience-section">
-            <div class="tab-content">
-                <div class="content-panel is-active" id="work">
+        <div class="info-widget-row">
+            <div class="widget widget-2x4">
+                <p class="widget-title">Skills</p>
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <div class="macos-window-card">
+                            <div class="macos-controls">
+                                <div class="control-dot red js-close-skill"><span class="close-icon">×</span></div>
+                            </div>
+                            <div class="tech-name">Swift</div>
+                        </div>
+                        <div class="macos-window-card">
+                            <div class="macos-controls">
+                                <div class="control-dot red js-close-skill"><span class="close-icon">×</span></div>
+                            </div>
+                            <div class="tech-name">SwiftUI</div>
+                        </div>
+                        <div class="macos-window-card">
+                            <div class="macos-controls">
+                                <div class="control-dot red js-close-skill"><span class="close-icon">×</span></div>
+                            </div>
+                            <div class="tech-name">CoreData</div>
+                        </div>
+                        <div class="macos-window-card">
+                            <div class="macos-controls">
+                                <div class="control-dot red js-close-skill"><span class="close-icon">×</span></div>
+                            </div>
+                            <div class="tech-name">Xcode</div>
+                        </div>
+                    </div>
+                </div>
+                <p class="skill-note">there will be no sense of clicking on the red dot in front of my skills</p>
+            </div>
 
+        </div>
+
+        <div class="widget widget-2x4 experience-widget">
+            <div class="tab-container">
+                <div class="segmented-control">
+                    <button class="tab-button is-active" data-tab="work">Work</button>
+                    <button class="tab-button" data-tab="education">Education</button>
+                </div>
+            </div>
+            <div class="experience-content">
+                <div class="content-panel is-active" id="work">
                     <div class="experience-entry">
-                        <img src="assets/bluebex.webp" alt="Company Logo" class="entry-logo">
-                        <div class="entry-details-block">
-                            <p class="entry-date">May 2025 - Present</p>
-                            <h3 class="entry-title">Bluebex Software</h3>
-                            <p class="entry-subtitle">iOS Developer</p>
-                            <ul class="entry-details">
+                        <div class="entry-main">
+                            <img src="assets/bluebex.webp" alt="Bluebex Logo" class="entry-logo">
+                            <div class="entry-details-block">
+                                <h3 class="entry-title">iOS Developer</h3>
+                                <p class="entry-subtitle">Bluebex Software</p>
+                                <p class="entry-date">May 2025 - Present</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right entry-chevron"></i>
+                        </div>
+                        <div class="entry-more-details">
+                            <ul>
                                 <li>Developed and maintained features for large-scale enterprise applications.</li>
                             </ul>
                         </div>
                     </div>
-
                     <div class="experience-entry">
-                        <img src="assets/tedxipsa.webp" alt="Company Logo" class="entry-logo">
-                        <div class="entry-details-block">
-                            <p class="entry-date">Nov 2023 - Aug 2025</p>
-                            <h4 class="entry-title">TEDxIPSA Indore</h4>
-                            <p class="entry-subtitle">Organiser</p>
-                            <ul class="entry-details">
+                        <div class="entry-main">
+                            <img src="assets/tedxipsa.webp" alt="TEDx Logo" class="entry-logo">
+                            <div class="entry-details-block">
+                                <h3 class="entry-title">Organiser</h3>
+                                <p class="entry-subtitle">TEDxIPSA</p>
+                                <p class="entry-date">Nov 2023 - Aug 2025</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right entry-chevron"></i>
+                        </div>
+                        <div class="entry-more-details">
+                            <ul>
                                 <li>Managed event logistics and speaker coordination for a major local event.</li>
                             </ul>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="content-panel" id="education">
                     <div class="experience-entry">
-                        <img src="assets/ipsacademy.webp" alt="School Logo" class="entry-logo">
-                        <div class="entry-details-block">
-                            <p class="entry-date">Nov 2021 - Jul 2025</p>
-                            <h4 class="entry-title">IPS Academy, Institute of Engineering and Science</h4>
-                            <p class="entry-subtitle">Bachelor of Technology, Computer Science</p>
-                            <ul class="entry-details">
+                        <div class="entry-main">
+                            <img src="assets/ipsacademy.webp" alt="IPS Academy Logo" class="entry-logo">
+                            <div class="entry-details-block">
+                                <h3 class="entry-title">B.Tech, Computer Science</h3>
+                                <p class="entry-subtitle">IPS Academy, IES</p>
+                                <p class="entry-date">2021 - 2025</p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right entry-chevron"></i>
+                        </div>
+                        <div class="entry-more-details">
+                            <ul>
                                 <li>Active member of the university's coding club.</li>
                             </ul>
-                            <div class="entry-tags">
-                                <span class="tag-pill">minor project</span>
-                                <span class="tag-pill">major project</span>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="projects-section">
-            <div class="section-header">
-                <h2 class="section-header-title">projects</h2>
-                <a href="#" class="view-more-link">view more →</a>
-            </div>
-
-            <div class="projects-grid">
-            </div>
-        </section>
-
-        <section class="showcase-section">
-            <div class="live-info-column">
-                <div class="info-card">
-                    <h3>Live Status</h3>
-                    <p id="live-time" class="info-value">--:-- --</p>
-                </div>
-                <div class="info-card">
-                    <h3>Current Focus</h3>
-                    <p id="live-focus" class="info-value">Building Cool Apps</p>
+        <div class="widget widget-4x4 projects-showcase-widget">
+            <div class="projects-slider-header">
+                <p class="widget-title">Projects</p>
+                <div class="slider-nav">
+                    <button class="slider-arrow prev" disabled>&lt;</button>
+                    <button class="slider-arrow next">&gt;</button>
                 </div>
             </div>
-
-            <div class="bookshelf-column">
-                <div class="bookshelf">
-                    <div class="shelf"></div>
-                    <div class="book">
-                        <div class="book-face book-front">
-                            <img src="https://m.media-amazon.com/images/I/71-3A+y+r7L._SY466_.jpg" alt="Book Cover">
-                        </div>
-                        <div class="book-face book-back">
-                            <h4>The Kala's Of Shri Krishna</h4>
-                            <a href="https://amzn.in/d/4KaZA9e" target="_blank">View</a>
-                        </div>
-                        <div class="book-face book-spine"></div>
-                    </div>
-                    <div class="book" style="transform: rotateY(-25deg); margin-left: -20px;">
-                         <div class="book-face book-front">
-                            <img src="https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1654371463l/18144590.jpg" alt="The Alchemist Cover">
-                        </div>
-                        <div class="book-face book-back">
-                            <h4>The Alchemist</h4>
-                            <a href="https://www.amazon.in/dp/0061122416" target="_blank">View</a>
-                        </div>
-                        <div class="book-face book-spine"></div>
-                    </div>
+            <div class="projects-slider-container">
+                <div class="projects-slider-track">
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section class="guestbook-section">
-            <h2 class="section-header-title">guestbook</h2>
-            <form id="guestbook-form" class="guestbook-form">
-                <input type="text" id="guest-name" placeholder="Your Name" required maxlength="50">
-                <textarea id="guest-message" placeholder="Leave a message..." required maxlength="280"></textarea>
-                <button type="submit">Sign Guestbook</button>
-            </form>
-            <div id="guestbook-messages" class="guestbook-messages">
-                </div>
-        </section>
-
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>© 2025 Aadish Jain</p>
-                </div>
-                <div class="footer-right">
-                    <p>Last updated on August 5, 2025</p>
-                </div>
+        <div class="widget widget-4x4 posts-widget">
+            <div class="posts-widget-header">
+                <p class="widget-title">Lastest Posts</p>
             </div>
-        </footer>
-    </div>
+            <div class="posts-list-container">
+            </div>
+            <div class="posts-widget-footer">
+                <a href="blog.html" class="view-all-posts-btn">
+                    View Blog <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-left">
+                <a href="reviews.html" class="review-button">Leave a Review</a>
+            </div>
+            <div class="footer-right">
+                <p>Last updated on August 11, 2025</p>
+            </div>
+        </div>
+        <p>© 2025 Aadish Jain</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 
     <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+        import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
         import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
         const firebaseConfig = {
@@ -359,62 +308,118 @@
             appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
         };
 
-        const app = initializeApp(firebaseConfig);
+        let app;
+        if (!getApps().length) {
+            app = initializeApp(firebaseConfig);
+        } else {
+            app = getApps()[0];
+        }
         const db = getFirestore(app);
 
         async function loadProjects() {
-            const projectsGrid = document.querySelector('.projects-grid');
-            if (!projectsGrid) return;
+            const sliderWidget = document.querySelector('.projects-showcase-widget');
+            if (!sliderWidget) return;
+
+            const track = sliderWidget.querySelector('.projects-slider-track');
+            const prevBtn = sliderWidget.querySelector('.slider-arrow.prev');
+            const nextBtn = sliderWidget.querySelector('.slider-arrow.next');
+            let activeIndex = 0;
+            let projectCards = [];
+
+            function updateSlider() {
+                if (projectCards.length === 0) return;
+                const cardWidth = projectCards[0].offsetWidth;
+                const gap = parseInt(window.getComputedStyle(track).gap);
+                const moveDistance = -(activeIndex * (cardWidth + gap));
+                track.style.transform = `translateX(${moveDistance}px)`;
+                prevBtn.disabled = activeIndex === 0;
+                nextBtn.disabled = activeIndex === projectCards.length - 1;
+            }
 
             try {
-                const projectsQuery = collection(db, 'projects');
-                const q = query(projectsQuery, orderBy('createdAt', 'desc'), limit(4));
-                const projectsSnapshot = await getDocs(q);
+                const projectsQuery = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
+                const snapshot = await getDocs(projectsQuery);
 
-                let projectsHTML = '';
-
-                if (projectsSnapshot.empty) {
-                    projectsGrid.innerHTML = '<p>No projects found.</p>';
-                    return;
-                }
-
-                projectsSnapshot.forEach(doc => {
+                snapshot.forEach(doc => {
                     const project = doc.data();
-                    const tagsHTML = project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
-
-                    projectsHTML += `
-                        <div class="project-card">
-                            <img src="${project.imageUrl}" alt="${project.title}" class="project-thumbnail">
-                            <div class="project-info">
-                                <h3 class="project-title">${project.title}</h3>
-                                <p class="project-description">${project.description}</p>
-                                <div class="project-tags">${tagsHTML}</div>
-                                <div class="project-links">
-                                    <a href="${project.sourceUrl}" class="project-link-button"><i class="fa-brands fa-github"></i>Source</a>
-                                </div>
-                            </div>
+                    const tagsHTML = project.tags.map(tag => `<span class="tech-tag-detailed">${tag}</span>`).join('');
+                    const card = document.createElement('div');
+                    card.className = 'project-card-detailed';
+                    card.innerHTML = `
+                        <img src="${project.imageUrl || 'assets/sampleimage.webp'}" alt="${project.title}" class="project-thumbnail-detailed">
+                        <div class="project-info-detailed">
+                            <h3 class="project-title-detailed">${project.title}</h3>
+                            <p class="project-description-detailed">${project.description}</p>
+                            <div class="project-tags-detailed">${tagsHTML}</div>
+                            <a href="${project.sourceUrl}" target="_blank" class="project-link-button-detailed">
+                                <i class="fa-brands fa-github"></i> View Source
+                            </a>
                         </div>
                     `;
+                    track.appendChild(card);
                 });
 
-                projectsGrid.innerHTML = projectsHTML;
-
+                projectCards = track.querySelectorAll('.project-card-detailed');
+                if (projectCards.length > 0) {
+                    updateSlider();
+                    nextBtn.addEventListener('click', () => {
+                        if (activeIndex < projectCards.length - 1) {
+                            activeIndex++;
+                            updateSlider();
+                        }
+                    });
+                    prevBtn.addEventListener('click', () => {
+                        if (activeIndex > 0) {
+                            activeIndex--;
+                            updateSlider();
+                        }
+                    });
+                } else {
+                    nextBtn.style.display = 'none';
+                    prevBtn.style.display = 'none';
+                }
             } catch (error) {
                 console.error("Error loading projects:", error);
-                projectsGrid.innerHTML = '<p>Could not load projects at this time.</p>';
+                track.innerHTML = '<p>Could not load projects.</p>';
+            }
+        }
+
+        async function loadPosts() {
+            const postsContainer = document.querySelector('.posts-list-container');
+            if (!postsContainer) return;
+
+            try {
+                const postsQuery = query(collection(db, 'posts'), orderBy('publishedAt', 'desc'), limit(3));
+                const postsSnapshot = await getDocs(postsQuery);
+
+                let postsHTML = '';
+                if (postsSnapshot.empty) {
+                    postsContainer.innerHTML = '<p style="padding: 0 14px; color: #8A8A8E;">No posts found yet.</p>';
+                    return;
+                }
+                postsSnapshot.forEach(doc => {
+                    const post = doc.data();
+                    postsHTML += `
+                        <a href="/blog/${post.slug}" class="post-item">
+                            <div class="post-text-content">
+                                <h4 class="post-title">${post.title}</h4>
+                                <p class="post-summary">${post.summary}</p>
+                            </div>
+                            <img src="${post.coverImageUrl || 'assets/sampleimage.webp'}" alt="${post.title}" class="post-thumbnail">
+                        </a>
+                    `;
+                });
+                postsContainer.innerHTML = postsHTML;
+            } catch (error) {
+                console.error("Error loading posts:", error);
+                postsContainer.innerHTML = '<p>Could not load posts.</p>';
             }
         }
 
         loadProjects();
+        loadPosts();
     </script>
 
-    <script src="js/skills.js"></script>
-    <script src="js/experience.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/guestbook.js" type="module"></script>
-    <script src="js/info-grid.js"></script>
-
-    <script src="https://kit.fontawesome.com/ab21585358.js" crossorigin="anonymous" defer></script>
 </body>
 
 </html>
