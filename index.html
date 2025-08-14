@@ -11,63 +11,57 @@
         content="The personal portfolio of Aadish Jain, a creative iOS developer from Indore, India, specializing in building engaging mobile user experiences with Swift and SwiftUI.">
 
     <meta name="keywords" content="Aadish Jain, iOS Developer, Swift, SwiftUI, Mobile App Developer, Portfolio, Indore">
-
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Person",
-      "@id": "https://www.aadishjain.com/#person",
-      "name": "Aadish Jain",
-      "url": "https://www.aadishjain.com",
-      "image": {
-        "@type": "ImageObject",
-        "url": "https://www.aadishjain.com/assets/aadishjain.webp",
-        "height": "300",
-        "width": "300"
-      },
-      "jobTitle": "Writer, Author, Poet, Software Engineer, iOS Developer",
-      "description": "Aadish Jain is a writer from Indore and a engineer with a passion for iOS development and building innovative products. He’s also working toward launching his own watch company.",
-      "nationality": "Indian",
-      "knowsLanguage": ["English", "Hindi"],
-      "alumniOf": {
-        "@type": "CollegeOrUniversity",
-        "name": "IPS Academy, Institute of Engineering and Science",
-        "sameAs": "https://ies.ipsacademy.org"
-      },
-      "sameAs": [
-        "https://github.com/aadishhere",
-        "https://linkedin.com/in/aadishhere",
-        "https://instagram.com/aadishhere",
-        "https://www.amazon.in/stores/author/B0BV14D8KJ",
-        "https://www.imdb.com/name/nm14537099/bio/",
-        "https://share.google/HcbRcRpbVGjru4HNi",
+  "@type": "WebPage",
+  "mainEntity": {
+    "@type": "Person",
+    "name": "Aadish Jain",
+    "url": "https://www.aadishjain.com",
+    "image": {
+      "@type": "ImageObject",
+      "url": "https://www.aadishjain.com/assets/aadishjain.webp",
+      "height": "300",
+      "width": "300"
+    },
+    "jobTitle": "Writer, Author, Poet, Software Engineer, iOS Developer",
+    "description": Aadish Jain is a writer from Indore and a engineer with a passion for iOS development and building innovative products. He’s also working toward launching his own watch company.",
+    "nationality": "Indian",
+    "knowsLanguage": ["English", "Hindi"],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "IPS Academy, Institute of Engineering and Science",
+      "sameAs": "https://ies.ipsacademy.org"
+    },
+    "sameAs": [
+      "https://github.com/aadishhere",
+      "https://linkedin.com/in/aadishhere",
+      "https://instagram.com/aadishhere",
+      "https://www.amazon.in/stores/author/B0BV14D8KJ",
+      "https://www.imdb.com/name/nm14537099/bio/",
+      "https://share.google/HcbRcRpbVGjru4HNi".
         "https://amzn.in/d/7pCtNLN",
         "https://www.youtube.com/@aadishhere",
         "https://www.goodreads.com/author/list/29745669.Aadish_Jain"
-      ],
-      "knowsAbout": [
-        "Poetry", "Writing", "iOS Development", "iOS App", "Spirituality",
-        "Song Writing", "App Development", "Indore", "Software Engineer"
-      ]
-    },
-    {
-      "@type": "Book",
-      "name": "The Kala's Of Shri Krishna",
-      "author": {
-        "@type": "Person",
-        "@id": "https://www.aadishjain.com/#person"
-      },
-      "url": "https://amzn.in/d/4KaZA9e",
-      "isbn": "B0C5VY39KR"
-    }
-  ]
+    ],
+    "knowsAbout": [
+      "Poetry", "Writing", "iOS Developement", "iOS App", "Spirituality", 
+      "Song Writing", "App Development", "Indore", "Software Engineer"
+    ],
+    "publication": [
+      {
+        "@type": "Book",
+        "name": "The Kala's Of Shri Krishna",
+        "author": { "@type": "Person", "name": "Aadish Jain" },
+        "url": "https://amzn.in/d/4KaZA9e",
+        "isbn": "B0C5VY39KR"
+      }
+    ]
+  }
 }
-</script>
-
-    <link rel="preload" fetchpriority="high" as="image" href="assets/aadishjain.webp" type="image/webp">
-    <link rel="preload" href="/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin>
+    </script>
     <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
@@ -286,71 +280,83 @@
 
         </main>
 
-        <footer class="footer">
+        <footer class="footer-index">
             <div class="footer-content">
                 <div class="footer-left">
                     <a href="reviews.html" class="review-button">Leave a Review</a>
                 </div>
                 <div class="footer-right">
-                    <p>Last updated on August 11, 2025</p>
+                    <p>© 2025 Aadish Jain</p>
                 </div>
             </div>
-            <p>© 2025 Aadish Jain</p>
         </footer>
 
         <script src="js/script.js" defer></script>
 
-        <script type="module">
-            import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
-            import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
+        <script>
+            const lenis = new Lenis()
 
-            const firebaseConfig = {
-                apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
-                authDomain: "myportfolio-aadishhere.firebaseapp.com",
-                projectId: "myportfolio-aadishhere",
-                storageBucket: "myportfolio-aadishhere.appspot.com",
-                messagingSenderId: "483800227478",
-                appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
-            };
-
-            let app;
-            if (!getApps().length) {
-                app = initializeApp(firebaseConfig);
-            } else {
-                app = getApps()[0];
+            function raf(time) {
+                lenis.raf(time)
+                requestAnimationFrame(raf)
             }
-            const db = getFirestore(app);
 
-            async function loadProjects() {
-                const sliderWidget = document.querySelector('.projects-showcase-widget');
-                if (!sliderWidget) return;
+            requestAnimationFrame(raf)
+        </script>
 
-                const track = sliderWidget.querySelector('.projects-slider-track');
-                const prevBtn = sliderWidget.querySelector('.slider-arrow.prev');
-                const nextBtn = sliderWidget.querySelector('.slider-arrow.next');
-                let activeIndex = 0;
-                let projectCards = [];
+    </div>
 
-                function updateSlider() {
-                    if (projectCards.length === 0) return;
-                    const cardWidth = projectCards[0].offsetWidth;
-                    const gap = parseInt(window.getComputedStyle(track).gap);
-                    const moveDistance = -(activeIndex * (cardWidth + gap));
-                    track.style.transform = `translateX(${moveDistance}px)`;
-                    prevBtn.disabled = activeIndex === 0;
-                    nextBtn.disabled = activeIndex === projectCards.length - 1;
-                }
+    <script type="module">
+        import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-app.js";
+        import { getFirestore, collection, getDocs, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/9.6.7/firebase-firestore.js";
 
-                try {
-                    const projectsQuery = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
-                    const snapshot = await getDocs(projectsQuery);
+        const firebaseConfig = {
+            apiKey: "AIzaSyAy8bC4VPqwOajedDs-vLldSoKDjcJVZd0",
+            authDomain: "myportfolio-aadishhere.firebaseapp.com",
+            projectId: "myportfolio-aadishhere",
+            storageBucket: "myportfolio-aadishhere.appspot.com",
+            messagingSenderId: "483800227478",
+            appId: "1:483800227478:web:994bda2c2d41a7377eecb7"
+        };
 
-                    snapshot.forEach(doc => {
-                        const project = doc.data();
-                        const tagsHTML = project.tags.map(tag => `<span class="tech-tag-detailed">${tag}</span>`).join('');
-                        const card = document.createElement('div');
-                        card.className = 'project-card-detailed';
-                        card.innerHTML = `
+        let app;
+        if (!getApps().length) {
+            app = initializeApp(firebaseConfig);
+        } else {
+            app = getApps()[0];
+        }
+        const db = getFirestore(app);
+
+        async function loadProjects() {
+            const sliderWidget = document.querySelector('.projects-showcase-widget');
+            if (!sliderWidget) return;
+
+            const track = sliderWidget.querySelector('.projects-slider-track');
+            const prevBtn = sliderWidget.querySelector('.slider-arrow.prev');
+            const nextBtn = sliderWidget.querySelector('.slider-arrow.next');
+            let activeIndex = 0;
+            let projectCards = [];
+
+            function updateSlider() {
+                if (projectCards.length === 0) return;
+                const cardWidth = projectCards[0].offsetWidth;
+                const gap = parseInt(window.getComputedStyle(track).gap);
+                const moveDistance = -(activeIndex * (cardWidth + gap));
+                track.style.transform = `translateX(${moveDistance}px)`;
+                prevBtn.disabled = activeIndex === 0;
+                nextBtn.disabled = activeIndex === projectCards.length - 1;
+            }
+
+            try {
+                const projectsQuery = query(collection(db, 'projects'), orderBy('createdAt', 'desc'));
+                const snapshot = await getDocs(projectsQuery);
+
+                snapshot.forEach(doc => {
+                    const project = doc.data();
+                    const tagsHTML = project.tags.map(tag => `<span class="tech-tag-detailed">${tag}</span>`).join('');
+                    const card = document.createElement('div');
+                    card.className = 'project-card-detailed';
+                    card.innerHTML = `
                         <img src="${project.imageUrl || 'assets/sampleimage.webp'}" alt="${project.title}" class="project-thumbnail-detailed">
                         <div class="project-info-detailed">
                             <h3 class="project-title-detailed">${project.title}</h3>
@@ -361,50 +367,50 @@
                             </a>
                         </div>
                     `;
-                        track.appendChild(card);
+                    track.appendChild(card);
+                });
+
+                projectCards = track.querySelectorAll('.project-card-detailed');
+                if (projectCards.length > 0) {
+                    updateSlider();
+                    nextBtn.addEventListener('click', () => {
+                        if (activeIndex < projectCards.length - 1) {
+                            activeIndex++;
+                            updateSlider();
+                        }
                     });
-
-                    projectCards = track.querySelectorAll('.project-card-detailed');
-                    if (projectCards.length > 0) {
-                        updateSlider();
-                        nextBtn.addEventListener('click', () => {
-                            if (activeIndex < projectCards.length - 1) {
-                                activeIndex++;
-                                updateSlider();
-                            }
-                        });
-                        prevBtn.addEventListener('click', () => {
-                            if (activeIndex > 0) {
-                                activeIndex--;
-                                updateSlider();
-                            }
-                        });
-                    } else {
-                        nextBtn.style.display = 'none';
-                        prevBtn.style.display = 'none';
-                    }
-                } catch (error) {
-                    console.error("Error loading projects:", error);
-                    track.innerHTML = '<p>Could not load projects.</p>';
+                    prevBtn.addEventListener('click', () => {
+                        if (activeIndex > 0) {
+                            activeIndex--;
+                            updateSlider();
+                        }
+                    });
+                } else {
+                    nextBtn.style.display = 'none';
+                    prevBtn.style.display = 'none';
                 }
+            } catch (error) {
+                console.error("Error loading projects:", error);
+                track.innerHTML = '<p>Could not load projects.</p>';
             }
+        }
 
-            async function loadPosts() {
-                const postsContainer = document.querySelector('.posts-list-container');
-                if (!postsContainer) return;
+        async function loadPosts() {
+            const postsContainer = document.querySelector('.posts-list-container');
+            if (!postsContainer) return;
 
-                try {
-                    const postsQuery = query(collection(db, 'posts'), orderBy('publishedAt', 'desc'), limit(3));
-                    const postsSnapshot = await getDocs(postsQuery);
+            try {
+                const postsQuery = query(collection(db, 'posts'), orderBy('publishedAt', 'desc'), limit(3));
+                const postsSnapshot = await getDocs(postsQuery);
 
-                    let postsHTML = '';
-                    if (postsSnapshot.empty) {
-                        postsContainer.innerHTML = '<p style="padding: 0 14px; color: #8A8A8E;">No posts found yet.</p>';
-                        return;
-                    }
-                    postsSnapshot.forEach(doc => {
-                        const post = doc.data();
-                        postsHTML += `
+                let postsHTML = '';
+                if (postsSnapshot.empty) {
+                    postsContainer.innerHTML = '<p style="padding: 0 14px; color: #8A8A8E;">No posts found yet.</p>';
+                    return;
+                }
+                postsSnapshot.forEach(doc => {
+                    const post = doc.data();
+                    postsHTML += `
                         <a href="/blog/${post.slug}" class="post-item">
                             <div class="post-text-content">
                                 <h4 class="post-title">${post.title}</h4>
@@ -413,17 +419,17 @@
                             <img src="${post.coverImageUrl || 'assets/sampleimage.webp'}" alt="${post.title}" class="post-thumbnail">
                         </a>
                     `;
-                    });
-                    postsContainer.innerHTML = postsHTML;
-                } catch (error) {
-                    console.error("Error loading posts:", error);
-                    postsContainer.innerHTML = '<p>Could not load posts.</p>';
-                }
+                });
+                postsContainer.innerHTML = postsHTML;
+            } catch (error) {
+                console.error("Error loading posts:", error);
+                postsContainer.innerHTML = '<p>Could not load posts.</p>';
             }
+        }
 
-            loadProjects();
-            loadPosts();
-        </script>
+        loadProjects();
+        loadPosts();
+    </script>
     </div>
 </body>
 

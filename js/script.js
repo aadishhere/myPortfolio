@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const footer = document.querySelector('.footer');
+    const footer = document.querySelector('.footer-index');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
