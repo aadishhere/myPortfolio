@@ -46,56 +46,59 @@
             <div id="projects-grid">
             </div>
         </main>
-        <script type="application/ld+json">
+<script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "WebPage",
-  "mainEntity": {
-    "@type": "Person",
-    "name": "Aadish Jain",
-    "url": "https://www.aadishjain.com",
-    "image": {
-      "@type": "ImageObject",
-      "url": "https://www.aadishjain.com/assets/aadishjain.webp",
-      "height": "300",
-      "width": "300"
-    },
-    "jobTitle": "Writer, Author, Poet, Software Engineer, iOS Developer",
-    "description": Aadish Jain is a writer from Indore and a engineer with a passion for iOS development and building innovative products. He’s also working toward launching his own watch company.",
-    "nationality": "Indian",
-    "knowsLanguage": ["English", "Hindi"],
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "IPS Academy, Institute of Engineering and Science",
-      "sameAs": "https://ies.ipsacademy.org"
-    },
-    "sameAs": [
-      "https://github.com/aadishhere",
-      "https://linkedin.com/in/aadishhere",
-      "https://instagram.com/aadishhere",
-      "https://www.amazon.in/stores/author/B0BV14D8KJ",
-      "https://www.imdb.com/name/nm14537099/bio/",
-      "https://share.google/HcbRcRpbVGjru4HNi".
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://www.aadishjain.com/#person",
+      "name": "Aadish Jain",
+      "url": "https://www.aadishjain.com",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://www.aadishjain.com/assets/aadishjain.webp",
+        "height": "300",
+        "width": "300"
+      },
+      "jobTitle": "Writer, Author, Poet, Software Engineer, iOS Developer",
+      "description": "Aadish Jain is a writer from Indore and a engineer with a passion for iOS development and building innovative products. He’s also working toward launching his own watch company.",
+      "nationality": "Indian",
+      "knowsLanguage": ["English", "Hindi"],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "IPS Academy, Institute of Engineering and Science",
+        "sameAs": "https://ies.ipsacademy.org"
+      },
+      "sameAs": [
+        "https://github.com/aadishhere",
+        "https://linkedin.com/in/aadishhere",
+        "https://instagram.com/aadishhere",
+        "https://www.amazon.in/stores/author/B0BV14D8KJ",
+        "https://www.imdb.com/name/nm14537099/bio/",
+        "https://share.google/HcbRcRpbVGjru4HNi",
         "https://amzn.in/d/7pCtNLN",
         "https://www.youtube.com/@aadishhere",
         "https://www.goodreads.com/author/list/29745669.Aadish_Jain"
-    ],
-    "knowsAbout": [
-      "Poetry", "Writing", "iOS Developement", "iOS App", "Spirituality", 
-      "Song Writing", "App Development", "Indore", "Software Engineer"
-    ],
-    "publication": [
-      {
-        "@type": "Book",
-        "name": "The Kala's Of Shri Krishna",
-        "author": { "@type": "Person", "name": "Aadish Jain" },
-        "url": "https://amzn.in/d/4KaZA9e",
-        "isbn": "B0C5VY39KR"
-      }
-    ]
-  }
+      ],
+      "knowsAbout": [
+        "Poetry", "Writing", "iOS Development", "iOS App", "Spirituality",
+        "Song Writing", "App Development", "Indore", "Software Engineer"
+      ]
+    },
+    {
+      "@type": "Book",
+      "name": "The Kala's Of Shri Krishna",
+      "author": {
+        "@type": "Person",
+        "@id": "https://www.aadishjain.com/#person"
+      },
+      "url": "https://amzn.in/d/4KaZA9e",
+      "isbn": "B0C5VY39KR"
+    }
+  ]
 }
-    </script>
+</script>
     <script src="js/script.js"></script>
 
         <script>
