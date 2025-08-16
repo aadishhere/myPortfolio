@@ -1,0 +1,1880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | iOS Developer Portfolio</title>
+    <style>
+        /* CSS Variables for theming */
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #8e8e93;
+            --accent-blue: #007aff;
+            --accent-red: #ff3b30;
+            --accent-green: #34c759;
+            --accent-orange: #ff9500;
+            --blur-bg: rgba(28, 28, 30, 0.8);
+            --border-color: rgba(84, 84, 88, 0.6);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Light mode variables */
+        .light-mode {
+            --bg-primary: #f2f2f7;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f2f2f7;
+            --text-primary: #000000;
+            --text-secondary: #8e8e93;
+            --blur-bg: rgba(255, 255, 255, 0.8);
+            --border-color: rgba(84, 84, 88, 0.2);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            transition: all 0.3s ease;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-secondary);
+            border-radius: 25px;
+            padding: 8px 16px;
+            z-index: 1000;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .island-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .island-avatar {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-orange));
+        }
+
+        /* Main Container */
+        .ios-container {
+            max-width: 430px;
+            margin: 0 auto;
+            min-height: 100vh;
+            background: var(--bg-primary);
+            position: relative;
+            padding: 100px 20px 120px;
+        }
+
+        /* Home Screen Grid */
+        .home-screen {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* App Icons */
+        .app-icon {
+            aspect-ratio: 1;
+            background: var(--bg-secondary);
+            border-radius: 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-icon:hover {
+            transform: scale(1.05);
+        }
+
+        .app-icon.jiggling {
+            animation: jiggle 0.5s ease-in-out infinite;
+        }
+
+        .app-icon .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .app-icon .label {
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--text-primary);
+            text-align: center;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 24px;
+            height: 24px;
+            background: var(--accent-red);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .app-icon.jiggling .delete-button {
+            display: flex;
+        }
+
+        /* Jiggle Animation */
+        @keyframes jiggle {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-2deg) scale(1.02); }
+            75% { transform: rotate(2deg) scale(1.02); }
+        }
+
+        /* Dock */
+        .dock {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--blur-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 12px 20px;
+            display: flex;
+            gap: 20px;
+            border: 1px solid var(--border-color);
+        }
+
+        .dock-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .dock-icon:hover {
+            transform: scale(1.2) translateY(-10px);
+        }
+
+        .dock-icon .icon {
+            font-size: 24px;
+            color: var(--text-primary);
+        }
+
+        /* Control Center */
+        .control-center {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            height: 60%;
+            background: var(--blur-bg);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border-radius: 20px 20px 0 0;
+            padding: 30px 20px;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 999;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .control-center.active {
+            bottom: 0;
+        }
+
+        .control-center-handle {
+            width: 40px;
+            height: 4px;
+            background: var(--text-secondary);
+            border-radius: 2px;
+            margin: 0 auto 30px;
+        }
+
+        .control-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .control-tile {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .control-tile:hover {
+            transform: scale(1.02);
+        }
+
+        .control-tile.active {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        .control-tile .icon {
+            font-size: 24px;
+            color: var(--text-primary);
+        }
+
+        .control-tile.active .icon {
+            color: white;
+        }
+
+        .control-tile .label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .control-tile.active .label {
+            color: white;
+        }
+
+        /* Spotlight Search */
+        .spotlight-search {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: var(--bg-primary);
+            z-index: 998;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 100px 20px 20px;
+        }
+
+        .spotlight-search.active {
+            top: 0;
+        }
+
+        .search-container {
+            max-width: 430px;
+            margin: 0 auto;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 15px 20px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            font-size: 18px;
+            color: var(--text-primary);
+            outline: none;
+            margin-bottom: 30px;
+        }
+
+        .search-bar::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .search-results {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .search-result {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideInResult 0.3s ease forwards;
+        }
+
+        .search-result:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .search-result .title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 5px;
+        }
+
+        .search-result .description {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        @keyframes slideInResult {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Modal/App Screens */
+        .app-modal {
+            position: fixed;
+            top: 100%;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: var(--bg-primary);
+            z-index: 997;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            padding: 60px 20px 20px;
+        }
+
+        .app-modal.active {
+            top: 0;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .close-button {
+            width: 32px;
+            height: 32px;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+        }
+
+        .modal-content {
+            max-width: 430px;
+            margin: 0 auto;
+        }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .project-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .skill-item {
+            background: var(--bg-secondary);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .skill-item .icon {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: var(--accent-blue);
+        }
+
+        .skill-item .name {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Contact Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-input {
+            padding: 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 16px;
+            color: var(--text-primary);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+        }
+
+        .submit-button {
+            background: var(--accent-blue);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            opacity: 0.8;
+        }
+
+        /* Gesture Indicators */
+        .gesture-hint {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            color: var(--text-secondary);
+            text-align: center;
+            z-index: 100;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .ios-container {
+                max-width: 800px;
+                padding: 120px 40px 140px;
+            }
+
+            .home-screen {
+                grid-template-columns: repeat(6, 1fr);
+                gap: 30px;
+            }
+
+            .app-icon {
+                border-radius: 28px;
+            }
+
+            .app-icon .icon {
+                font-size: 40px;
+            }
+
+            .app-icon .label {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .ios-container {
+                max-width: 1200px;
+                padding: 140px 60px 160px;
+            }
+
+            .home-screen {
+                grid-template-columns: repeat(8, 1fr);
+                gap: 40px;
+            }
+        }
+
+        /* Header Section */
+        .header-section {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 30px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-orange));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+            border: 3px solid var(--border-color);
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 18px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            font-size: 16px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        /* Overlay for modals */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 996;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 50%;
+            border-top-color: var(--accent-blue);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Touch feedback */
+        .touch-feedback {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .touch-feedback::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.3s ease;
+        }
+
+        .touch-feedback:active::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--text-secondary);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-primary);
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Dynamic Island -->
+    <div class="dynamic-island" id="dynamicIsland">
+        <div class="island-content">
+            <div class="island-avatar"></div>
+            <span id="islandText">Available for work</span>
+        </div>
+    </div>
+
+    <!-- Main iOS Container -->
+    <div class="ios-container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="profile-image">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="name">Your Name</h1>
+            <p class="title">iOS Developer & UI Designer</p>
+            <p class="bio">Passionate about creating beautiful, intuitive mobile experiences. Specializing in Swift, SwiftUI, and modern iOS development.</p>
+        </div>
+
+        <!-- Home Screen App Grid -->
+        <div class="home-screen" id="homeScreen">
+            <!-- Projects App -->
+            <div class="app-icon touch-feedback" data-app="projects">
+                <i class="fas fa-folder icon"></i>
+                <span class="label">Projects</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Skills App -->
+            <div class="app-icon touch-feedback" data-app="skills">
+                <i class="fas fa-code icon"></i>
+                <span class="label">Skills</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Experience App -->
+            <div class="app-icon touch-feedback" data-app="experience">
+                <i class="fas fa-briefcase icon"></i>
+                <span class="label">Experience</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Contact App -->
+            <div class="app-icon touch-feedback" data-app="contact">
+                <i class="fas fa-envelope icon"></i>
+                <span class="label">Contact</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- About App -->
+            <div class="app-icon touch-feedback" data-app="about">
+                <i class="fas fa-user-circle icon"></i>
+                <span class="label">About</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Blog App -->
+            <div class="app-icon touch-feedback" data-app="blog">
+                <i class="fas fa-pen icon"></i>
+                <span class="label">Blog</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Resume App -->
+            <div class="app-icon touch-feedback" data-app="resume">
+                <i class="fas fa-file-alt icon"></i>
+                <span class="label">Resume</span>
+                <div class="delete-button">×</div>
+            </div>
+
+            <!-- Social App -->
+            <div class="app-icon touch-feedback" data-app="social">
+                <i class="fas fa-share-alt icon"></i>
+                <span class="label">Social</span>
+                <div class="delete-button">×</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dock -->
+    <div class="dock">
+        <div class="dock-icon touch-feedback" id="jiggleModeToggle">
+            <i class="fas fa-edit icon"></i>
+        </div>
+        <div class="dock-icon touch-feedback" id="themeToggle">
+            <i class="fas fa-moon icon"></i>
+        </div>
+        <div class="dock-icon touch-feedback" id="searchToggle">
+            <i class="fas fa-search icon"></i>
+        </div>
+    </div>
+
+    <!-- Control Center -->
+    <div class="control-center" id="controlCenter">
+        <div class="control-center-handle"></div>
+        <div class="control-grid">
+            <div class="control-tile" id="wifiTile">
+                <i class="fas fa-wifi icon"></i>
+                <span class="label">Wi-Fi</span>
+            </div>
+            <div class="control-tile" id="bluetoothTile">
+                <i class="fas fa-bluetooth icon"></i>
+                <span class="label">Bluetooth</span>
+            </div>
+            <div class="control-tile" id="airplaneTile">
+                <i class="fas fa-plane icon"></i>
+                <span class="label">Airplane</span>
+            </div>
+            <div class="control-tile" id="focusTile">
+                <i class="fas fa-moon icon"></i>
+                <span class="label">Focus</span>
+            </div>
+        </div>
+        <div class="control-tile" style="grid-column: 1 / -1;" id="brightnessControl">
+            <i class="fas fa-sun icon"></i>
+            <span class="label">Brightness</span>
+        </div>
+    </div>
+
+    <!-- Spotlight Search -->
+    <div class="spotlight-search" id="spotlightSearch">
+        <div class="search-container">
+            <input type="text" class="search-bar" id="searchInput" placeholder="Search">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+    </div>
+
+    <!-- App Modals -->
+    <!-- Projects Modal -->
+    <div class="app-modal" id="projectsModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Projects</h2>
+            <div class="close-button" data-close="projects">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">iOS Weather App</h3>
+                    <p class="project-description">A beautiful weather application built with SwiftUI featuring custom animations and Core Location integration.</p>
+                    <div class="project-tags">
+                        <span class="tag">Swift</span>
+                        <span class="tag">SwiftUI</span>
+                        <span class="tag">Core Location</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Puzzle Game</h3>
+                    <p class="project-description">An engaging puzzle game with smooth animations and haptic feedback, showcasing advanced iOS gaming capabilities.</p>
+                    <div class="project-tags">
+                        <span class="tag">Swift</span>
+                        <span class="tag">SpriteKit</span>
+                        <span class="tag">GameKit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">Finance Tracker</h3>
+                    <p class="project-description">A comprehensive finance tracking app with Core Data persistence and beautiful chart visualizations.</p>
+                    <div class="project-tags">
+                        <span class="tag">Swift</span>
+                        <span class="tag">Core Data</span>
+                        <span class="tag">Charts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Modal -->
+    <div class="app-modal" id="skillsModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Skills</h2>
+            <div class="close-button" data-close="skills">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal-content">
+            <div class="skills-grid" id="skillsGrid">
+                <div class="skill-item" data-skill="swift">
+                    <i class="fab fa-swift icon"></i>
+                    <div class="name">Swift</div>
+                    <div class="delete-button">×</div>
+                </div>
+                <div class="skill-item" data-skill="ios">
+                    <i class="fab fa-apple icon"></i>
+                    <div class="name">iOS</div>
+                    <div class="delete-button">×</div>
+                </div>
+                <div class="skill-item" data-skill="swiftui">
+                    <i class="fas fa-mobile-alt icon"></i>
+                    <div class="name">SwiftUI</div>
+                    <div class="delete-button">×</div>
+                </div>
+                <div class="skill-item" data-skill="xcode">
+                    <i class="fas fa-code icon"></i>
+                    <div class="name">Xcode</div>
+                    <div class="delete-button">×</div>
+                </div>
+                <div class="skill-item" data-skill="coredata">
+                    <i class="fas fa-database icon"></i>
+                    <div class="name">Core Data</div>
+                    <div class="delete-button">×</div>
+                </div>
+                <div class="skill-item" data-skill="git">
+                    <i class="fab fa-git-alt icon"></i>
+                    <div class="name">Git</div>
+                    <div class="delete-button">×</div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; text-align: center; color: var(--text-secondary); font-size: 14px;">
+                Long press any skill to enter edit mode and remove skills you don't need.
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div class="app-modal" id="contactModal">
+        <div class="modal-header">
+            <h2 class="modal-title">Contact</h2>
+            <div class="close-button" data-close="contact">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <div class="modal-content">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="your.email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-input" rows="5" placeholder="Tell me about your project..." required></textarea>
+                </div>
+                <button type="submit" class="submit-button">
+                    <span id="submitText">Send Message</span>
+                    <div class="loading" id="submitLoading" style="display: none;"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Gesture Hint -->
+    <div class="gesture-hint">
+        Swipe up for Control Center • Pull down for Search • Long press to edit
+    </div>
+
+    <script>
+        // Global state management
+        const state = {
+            jiggleMode: false,
+            isDarkMode: true,
+            controlCenterOpen: false,
+            spotlightOpen: false,
+            currentModal: null
+        };
+
+        // Search data for Spotlight
+        const searchData = [
+            { title: 'iOS Weather App', description: 'SwiftUI weather application', type: 'project' },
+            { title: 'Puzzle Game', description: 'SpriteKit gaming experience', type: 'project' },
+            { title: 'Finance Tracker', description: 'Core Data finance app', type: 'project' },
+            { title: 'Swift', description: 'Programming language expertise', type: 'skill' },
+            { title: 'SwiftUI', description: 'Modern iOS UI framework', type: 'skill' },
+            { title: 'Core Data', description: 'iOS data persistence', type: 'skill' },
+            { title: 'Contact Me', description: 'Get in touch for opportunities', type: 'contact' },
+            { title: 'Resume', description: 'Download my latest resume', type: 'resume' }
+        ];
+
+        // DOM Elements
+        const elements = {
+            dynamicIsland: document.getElementById('dynamicIsland'),
+            homeScreen: document.getElementById('homeScreen'),
+            controlCenter: document.getElementById('controlCenter'),
+            spotlightSearch: document.getElementById('spotlightSearch'),
+            searchInput: document.getElementById('searchInput'),
+            searchResults: document.getElementById('searchResults'),
+            overlay: document.getElementById('overlay'),
+            themeToggle: document.getElementById('themeToggle'),
+            jiggleModeToggle: document.getElementById('jiggleModeToggle'),
+            searchToggle: document.getElementById('searchToggle')
+        };
+
+        // Feature 1: Control Center Implementation
+        class ControlCenter {
+            constructor() {
+                this.isOpen = false;
+                this.startY = 0;
+                this.currentY = 0;
+                this.isDragging = false;
+                this.threshold = 100; // Minimum swipe distance to trigger
+                
+                this.initializeEventListeners();
+                this.initializeControlTiles();
+            }
+
+            initializeEventListeners() {
+                // Touch events for mobile
+                document.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+                document.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+                document.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+
+                // Mouse events for desktop
+                document.addEventListener('mousedown', this.handleMouseDown.bind(this));
+                document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+                document.addEventListener('mouseup', this.handleMouseUp.bind(this));
+
+                // Close on overlay click
+                elements.overlay.addEventListener('click', () => this.close());
+            }
+
+            handleTouchStart(e) {
+                this.startY = e.touches[0].clientY;
+                this.isDragging = true;
+            }
+
+            handleTouchMove(e) {
+                if (!this.isDragging) return;
+                
+                this.currentY = e.touches[0].clientY;
+                const deltaY = this.startY - this.currentY;
+
+                // Only allow upward swipes from bottom area
+                if (this.startY > window.innerHeight - 100 && deltaY > 0) {
+                    e.preventDefault();
+                    const progress = Math.min(deltaY / this.threshold, 1);
+                    this.updateControlCenterPosition(progress);
+                }
+            }
+
+            handleTouchEnd(e) {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+
+                const deltaY = this.startY - this.currentY;
+                if (deltaY > this.threshold) {
+                    this.open();
+                } else {
+                    this.close();
+                }
+            }
+
+            handleMouseDown(e) {
+                // Only trigger from bottom area
+                if (e.clientY > window.innerHeight - 50) {
+                    this.startY = e.clientY;
+                    this.isDragging = true;
+                }
+            }
+
+            handleMouseMove(e) {
+                if (!this.isDragging) return;
+                
+                this.currentY = e.clientY;
+                const deltaY = this.startY - this.currentY;
+
+                if (deltaY > 0) {
+                    const progress = Math.min(deltaY / this.threshold, 1);
+                    this.updateControlCenterPosition(progress);
+                }
+            }
+
+            handleMouseUp(e) {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+
+                const deltaY = this.startY - this.currentY;
+                if (deltaY > this.threshold) {
+                    this.open();
+                } else {
+                    this.close();
+                }
+            }
+
+            updateControlCenterPosition(progress) {
+                const translateY = (1 - progress) * 100;
+                elements.controlCenter.style.transform = `translateY(${translateY}%)`;
+                elements.overlay.style.opacity = progress * 0.5;
+            }
+
+            open() {
+                this.isOpen = true;
+                state.controlCenterOpen = true;
+                elements.controlCenter.classList.add('active');
+                elements.overlay.classList.add('active');
+                elements.controlCenter.style.transform = '';
+                
+                // Update Dynamic Island
+                this.updateDynamicIsland('Control Center active');
+            }
+
+            close() {
+                this.isOpen = false;
+                state.controlCenterOpen = false;
+                elements.controlCenter.classList.remove('active');
+                elements.overlay.classList.remove('active');
+                elements.controlCenter.style.transform = '';
+                
+                // Reset Dynamic Island
+                this.updateDynamicIsland('Available for work');
+            }
+
+            updateDynamicIsland(text) {
+                document.getElementById('islandText').textContent = text;
+            }
+
+            initializeControlTiles() {
+                // Wi-Fi toggle
+                document.getElementById('wifiTile').addEventListener('click', () => {
+                    this.toggleTile('wifiTile', 'Wi-Fi connected');
+                });
+
+                // Bluetooth toggle
+                document.getElementById('bluetoothTile').addEventListener('click', () => {
+                    this.toggleTile('bluetoothTile', 'Bluetooth on');
+                });
+
+                // Airplane mode toggle
+                document.getElementById('airplaneTile').addEventListener('click', () => {
+                    this.toggleTile('airplaneTile', 'Airplane mode');
+                });
+
+                // Focus mode toggle
+                document.getElementById('focusTile').addEventListener('click', () => {
+                    this.toggleTile('focusTile', 'Focus mode');
+                });
+            }
+
+            toggleTile(tileId, message) {
+                const tile = document.getElementById(tileId);
+                tile.classList.toggle('active');
+                
+                // Haptic feedback simulation
+                this.simulateHaptic();
+                
+                // Update Dynamic Island with status
+                if (tile.classList.contains('active')) {
+                    this.updateDynamicIsland(message);
+                } else {
+                    this.updateDynamicIsland('Control Center active');
+                }
+            }
+
+            simulateHaptic() {
+                // Visual haptic feedback
+                document.body.style.transform = 'scale(0.998)';
+                setTimeout(() => {
+                    document.body.style.transform = '';
+                }, 50);
+            }
+        }
+
+        // Feature 2: Enhanced Jiggle Mode
+        class JiggleMode {
+            constructor() {
+                this.isActive = false;
+                this.longPressTimer = null;
+                this.longPressDuration = 800; // ms
+                
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                // Toggle button in dock
+                elements.jiggleModeToggle.addEventListener('click', () => {
+                    this.toggle();
+                });
+
+                // Long press detection for skills
+                const skillItems = document.querySelectorAll('.skill-item');
+                skillItems.forEach(item => {
+                    // Touch events
+                    item.addEventListener('touchstart', (e) => {
+                        this.startLongPress(e, item);
+                    });
+                    item.addEventListener('touchend', () => {
+                        this.cancelLongPress();
+                    });
+                    item.addEventListener('touchmove', () => {
+                        this.cancelLongPress();
+                    });
+
+                    // Mouse events
+                    item.addEventListener('mousedown', (e) => {
+                        this.startLongPress(e, item);
+                    });
+                    item.addEventListener('mouseup', () => {
+                        this.cancelLongPress();
+                    });
+                    item.addEventListener('mouseleave', () => {
+                        this.cancelLongPress();
+                    });
+                });
+
+                // Delete button functionality
+                document.addEventListener('click', (e) => {
+                    if (e.target.classList.contains('delete-button')) {
+                        this.deleteItem(e.target.closest('.app-icon, .skill-item'));
+                    }
+                });
+            }
+
+            startLongPress(e, element) {
+                e.preventDefault();
+                this.longPressTimer = setTimeout(() => {
+                    if (element.classList.contains('skill-item')) {
+                        this.activateForSkills();
+                    } else {
+                        this.activate();
+                    }
+                    this.simulateHaptic();
+                }, this.longPressDuration);
+            }
+
+            cancelLongPress() {
+                if (this.longPressTimer) {
+                    clearTimeout(this.longPressTimer);
+                    this.longPressTimer = null;
+                }
+            }
+
+            toggle() {
+                if (this.isActive) {
+                    this.deactivate();
+                } else {
+                    this.activate();
+                }
+            }
+
+            activate() {
+                this.isActive = true;
+                state.jiggleMode = true;
+                
+                // Add jiggle animation to app icons
+                const appIcons = document.querySelectorAll('.app-icon');
+                appIcons.forEach(icon => {
+                    icon.classList.add('jiggling');
+                });
+
+                // Update Dynamic Island
+                document.getElementById('islandText').textContent = 'Edit mode active';
+                
+                // Change dock icon
+                elements.jiggleModeToggle.querySelector('.icon').className = 'fas fa-check icon';
+            }
+
+            activateForSkills() {
+                // Special jiggle mode for skills in modal
+                const skillItems = document.querySelectorAll('.skill-item');
+                skillItems.forEach(item => {
+                    item.classList.add('jiggling');
+                });
+            }
+
+            deactivate() {
+                this.isActive = false;
+                state.jiggleMode = false;
+                
+                // Remove jiggle animation
+                const jigglingElements = document.querySelectorAll('.jiggling');
+                jigglingElements.forEach(element => {
+                    element.classList.remove('jiggling');
+                });
+
+                // Reset Dynamic Island
+                document.getElementById('islandText').textContent = 'Available for work';
+                
+                // Reset dock icon
+                elements.jiggleModeToggle.querySelector('.icon').className = 'fas fa-edit icon';
+            }
+
+            deleteItem(element) {
+                // Animate deletion
+                element.style.transform = 'scale(0)';
+                element.style.opacity = '0';
+                
+                setTimeout(() => {
+                    if (element.classList.contains('skill-item')) {
+                        // For skills, just hide them
+                        element.style.display = 'none';
+                        
+                        // Check if all skills are deleted
+                        const visibleSkills = document.querySelectorAll('.skill-item:not([style*="display: none"])');
+                        if (visibleSkills.length === 0) {
+                            this.showSkillsResetMessage();
+                        }
+                    } else {
+                        // For app icons, remove from grid
+                        element.remove();
+                    }
+                }, 300);
+
+                this.simulateHaptic();
+            }
+
+            showSkillsResetMessage() {
+                const skillsGrid = document.getElementById('skillsGrid');
+                skillsGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+                        <i class="fas fa-undo" style="font-size: 48px; margin-bottom: 20px; color: var(--accent-blue);"></i>
+                        <p style="font-size: 18px; margin-bottom: 20px;">All skills removed!</p>
+                        <button onclick="jiggleMode.resetSkills()" style="background: var(--accent-blue); color: white; border: none; padding: 12px 24px; border-radius: 12px; font-size: 16px; cursor: pointer;">
+                            Restore Skills
+                        </button>
+                    </div>
+                `;
+            }
+
+            resetSkills() {
+                // Restore all skills
+                const skillsGrid = document.getElementById('skillsGrid');
+                skillsGrid.innerHTML = `
+                    <div class="skill-item" data-skill="swift">
+                        <i class="fab fa-swift icon"></i>
+                        <div class="name">Swift</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                    <div class="skill-item" data-skill="ios">
+                        <i class="fab fa-apple icon"></i>
+                        <div class="name">iOS</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                    <div class="skill-item" data-skill="swiftui">
+                        <i class="fas fa-mobile-alt icon"></i>
+                        <div class="name">SwiftUI</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                    <div class="skill-item" data-skill="xcode">
+                        <i class="fas fa-code icon"></i>
+                        <div class="name">Xcode</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                    <div class="skill-item" data-skill="coredata">
+                        <i class="fas fa-database icon"></i>
+                        <div class="name">Core Data</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                    <div class="skill-item" data-skill="git">
+                        <i class="fab fa-git-alt icon"></i>
+                        <div class="name">Git</div>
+                        <div class="delete-button">×</div>
+                    </div>
+                `;
+                
+                // Re-initialize long press for new elements
+                this.initializeSkillLongPress();
+            }
+
+            initializeSkillLongPress() {
+                const skillItems = document.querySelectorAll('.skill-item');
+                skillItems.forEach(item => {
+                    item.addEventListener('touchstart', (e) => {
+                        this.startLongPress(e, item);
+                    });
+                    item.addEventListener('touchend', () => {
+                        this.cancelLongPress();
+                    });
+                    item.addEventListener('mousedown', (e) => {
+                        this.startLongPress(e, item);
+                    });
+                    item.addEventListener('mouseup', () => {
+                        this.cancelLongPress();
+                    });
+                });
+            }
+
+            simulateHaptic() {
+                // Visual haptic feedback
+                document.body.style.transform = 'scale(0.995)';
+                setTimeout(() => {
+                    document.body.style.transform = '';
+                }, 100);
+            }
+        }
+
+        // Feature 3: Spotlight Search Implementation
+        class SpotlightSearch {
+            constructor() {
+                this.isOpen = false;
+                this.startY = 0;
+                this.currentY = 0;
+                this.isDragging = false;
+                this.threshold = 80;
+                
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                // Touch events
+                document.addEventListener('touchstart', this.handleTouchStart.bind(this), { passive: false });
+                document.addEventListener('touchmove', this.handleTouchMove.bind(this), { passive: false });
+                document.addEventListener('touchend', this.handleTouchEnd.bind(this), { passive: false });
+
+                // Mouse events
+                document.addEventListener('mousedown', this.handleMouseDown.bind(this));
+                document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+                document.addEventListener('mouseup', this.handleMouseUp.bind(this));
+
+                // Search input
+                elements.searchInput.addEventListener('input', this.handleSearch.bind(this));
+                
+                // Search toggle button
+                elements.searchToggle.addEventListener('click', () => {
+                    this.toggle();
+                });
+
+                // Close on overlay click
+                elements.overlay.addEventListener('click', () => this.close());
+
+                // Escape key to close
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && this.isOpen) {
+                        this.close();
+                    }
+                });
+            }
+
+            handleTouchStart(e) {
+                this.startY = e.touches[0].clientY;
+                this.isDragging = true;
+            }
+
+            handleTouchMove(e) {
+                if (!this.isDragging) return;
+                
+                this.currentY = e.touches[0].clientY;
+                const deltaY = this.currentY - this.startY;
+
+                // Only allow downward swipes from top area
+                if (this.startY < 100 && deltaY > 0) {
+                    e.preventDefault();
+                    const progress = Math.min(deltaY / this.threshold, 1);
+                    this.updateSearchPosition(progress);
+                }
+            }
+
+            handleTouchEnd(e) {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+
+                const deltaY = this.currentY - this.startY;
+                if (deltaY > this.threshold) {
+                    this.open();
+                } else {
+                    this.close();
+                }
+            }
+
+            handleMouseDown(e) {
+                // Only trigger from top area
+                if (e.clientY < 100) {
+                    this.startY = e.clientY;
+                    this.isDragging = true;
+                }
+            }
+
+            handleMouseMove(e) {
+                if (!this.isDragging) return;
+                
+                this.currentY = e.clientY;
+                const deltaY = this.currentY - this.startY;
+
+                if (deltaY > 0) {
+                    const progress = Math.min(deltaY / this.threshold, 1);
+                    this.updateSearchPosition(progress);
+                }
+            }
+
+            handleMouseUp(e) {
+                if (!this.isDragging) return;
+                this.isDragging = false;
+
+                const deltaY = this.currentY - this.startY;
+                if (deltaY > this.threshold) {
+                    this.open();
+                } else {
+                    this.close();
+                }
+            }
+
+            updateSearchPosition(progress) {
+                const translateY = (progress - 1) * 100;
+                elements.spotlightSearch.style.transform = `translateY(${translateY}%)`;
+                elements.overlay.style.opacity = progress * 0.3;
+            }
+
+            toggle() {
+                if (this.isOpen) {
+                    this.close();
+                } else {
+                    this.open();
+                }
+            }
+
+            open() {
+                this.isOpen = true;
+                state.spotlightOpen = true;
+                elements.spotlightSearch.classList.add('active');
+                elements.overlay.classList.add('active');
+                elements.spotlightSearch.style.transform = '';
+                
+                // Focus search input
+                setTimeout(() => {
+                    elements.searchInput.focus();
+                }, 300);
+
+                // Update Dynamic Island
+                document.getElementById('islandText').textContent = 'Searching...';
+            }
+
+            close() {
+                this.isOpen = false;
+                state.spotlightOpen = false;
+                elements.spotlightSearch.classList.remove('active');
+                elements.overlay.classList.remove('active');
+                elements.spotlightSearch.style.transform = '';
+                elements.searchInput.value = '';
+                elements.searchResults.innerHTML = '';
+                
+                // Reset Dynamic Island
+                document.getElementById('islandText').textContent = 'Available for work';
+            }
+
+            handleSearch(e) {
+                const query = e.target.value.toLowerCase().trim();
+                
+                if (query === '') {
+                    elements.searchResults.innerHTML = '';
+                    return;
+                }
+
+                // Filter search data
+                const results = searchData.filter(item => 
+                    item.title.toLowerCase().includes(query) || 
+                    item.description.toLowerCase().includes(query)
+                );
+
+                // Display results
+                this.displayResults(results);
+            }
+
+            displayResults(results) {
+                elements.searchResults.innerHTML = '';
+                
+                if (results.length === 0) {
+                    elements.searchResults.innerHTML = `
+                        <div class="search-result">
+                            <div class="title">No results found</div>
+                            <div class="description">Try searching for projects, skills, or contact</div>
+                        </div>
+                    `;
+                    return;
+                }
+
+                results.forEach((result, index) => {
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'search-result';
+                    resultElement.style.animationDelay = `${index * 0.1}s`;
+                    
+                    resultElement.innerHTML = `
+                        <div class="title">${this.highlightMatch(result.title, elements.searchInput.value)}</div>
+                        <div class="description">${result.description}</div>
+                    `;
+
+                    resultElement.addEventListener('click', () => {
+                        this.handleResultClick(result);
+                    });
+
+                    elements.searchResults.appendChild(resultElement);
+                });
+            }
+
+            highlightMatch(text, query) {
+                if (!query) return text;
+                const regex = new RegExp(`(${query})`, 'gi');
+                return text.replace(regex, '<strong style="color: var(--accent-blue);">$1</strong>');
+            }
+
+            handleResultClick(result) {
+                this.close();
+                
+                // Handle different result types
+                switch (result.type) {
+                    case 'project':
+                        modalManager.openModal('projects');
+                        break;
+                    case 'skill':
+                        modalManager.openModal('skills');
+                        break;
+                    case 'contact':
+                        modalManager.openModal('contact');
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        // Modal Management
+        class ModalManager {
+            constructor() {
+                this.currentModal = null;
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                // App icon clicks
+                const appIcons = document.querySelectorAll('.app-icon');
+                appIcons.forEach(icon => {
+                    icon.addEventListener('click', (e) => {
+                        // Don't open modal if in jiggle mode
+                        if (state.jiggleMode) return;
+                        
+                        const appName = icon.dataset.app;
+                        this.openModal(appName);
+                    });
+                });
+
+                // Close buttons
+                const closeButtons = document.querySelectorAll('.close-button');
+                closeButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        this.closeModal();
+                    });
+                });
+
+                // Overlay click to close
+                elements.overlay.addEventListener('click', () => {
+                    this.closeModal();
+                });
+            }
+
+            openModal(modalName) {
+                if (this.currentModal) {
+                    this.closeModal();
+                }
+
+                const modal = document.getElementById(`${modalName}Modal`);
+                if (modal) {
+                    this.currentModal = modalName;
+                    state.currentModal = modalName;
+                    modal.classList.add('active');
+                    elements.overlay.classList.add('active');
+                    
+                    // Update Dynamic Island
+                    document.getElementById('islandText').textContent = `${modalName.charAt(0).toUpperCase() + modalName.slice(1)} open`;
+                }
+            }
+
+            closeModal() {
+                if (this.currentModal) {
+                    const modal = document.getElementById(`${this.currentModal}Modal`);
+                    if (modal) {
+                        modal.classList.remove('active');
+                    }
+                    
+                    this.currentModal = null;
+                    state.currentModal = null;
+                    elements.overlay.classList.remove('active');
+                    
+                    // Reset Dynamic Island
+                    document.getElementById('islandText').textContent = 'Available for work';
+                }
+            }
+        }
+
+        // Theme Management
+        class ThemeManager {
+            constructor() {
+                this.isDarkMode = true;
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                elements.themeToggle.addEventListener('click', () => {
+                    this.toggle();
+                });
+            }
+
+            toggle() {
+                this.isDarkMode = !this.isDarkMode;
+                state.isDarkMode = this.isDarkMode;
+                
+                if (this.isDarkMode) {
+                    document.body.classList.remove('light-mode');
+                    elements.themeToggle.querySelector('.icon').className = 'fas fa-moon icon';
+                } else {
+                    document.body.classList.add('light-mode');
+                    elements.themeToggle.querySelector('.icon').className = 'fas fa-sun icon';
+                }
+
+                // Update Dynamic Island
+                document.getElementById('islandText').textContent = `${this.isDarkMode ? 'Dark' : 'Light'} mode active`;
+                
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    if (!state.controlCenterOpen && !state.spotlightOpen && !state.currentModal) {
+                        document.getElementById('islandText').textContent = 'Available for work';
+                    }
+                }, 2000);
+            }
+        }
+
+        // Contact Form Handler
+        class ContactForm {
+            constructor() {
+                this.initializeEventListeners();
+            }
+
+            initializeEventListeners() {
+                const form = document.getElementById('contactForm');
+                form.addEventListener('submit', this.handleSubmit.bind(this));
+            }
+
+            async handleSubmit(e) {
+                e.preventDefault();
+                
+                const submitButton = e.target.querySelector('.submit-button');
+                const submitText = document.getElementById('submitText');
+                const submitLoading = document.getElementById('submitLoading');
+                
+                // Show loading state
+                submitText.style.display = 'none';
+                submitLoading.style.display = 'inline-block';
+                submitButton.disabled = true;
+
+                // Simulate form submission
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Show success state
+                submitLoading.style.display = 'none';
+                submitText.textContent = 'Message Sent!';
+                submitText.style.display = 'inline';
+                submitButton.style.background = 'var(--accent-green)';
+
+                // Update Dynamic Island
+                document.getElementById('islandText').textContent = 'Message sent successfully!';
+
+                // Reset form after 3 seconds
+                setTimeout(() => {
+                    e.target.reset();
+                    submitText.textContent = 'Send Message';
+                    submitButton.style.background = 'var(--accent-blue)';
+                    submitButton.disabled = false;
+                    
+                    if (!state.controlCenterOpen && !state.spotlightOpen) {
+                        document.getElementById('islandText').textContent = 'Available for work';
+                    }
+                }, 3000);
+            }
+        }
+
+        // Initialize all features when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize all classes
+            window.controlCenter = new ControlCenter();
+            window.jiggleMode = new JiggleMode();
+            window.spotlightSearch = new SpotlightSearch();
+            window.modalManager = new ModalManager();
+            window.themeManager = new ThemeManager();
+            window.contactForm = new ContactForm();
+
+            // Dynamic Island click handler
+            elements.dynamicIsland.addEventListener('click', () => {
+                // Animate island on click
+                elements.dynamicIsland.style.transform = 'translateX(-50%) scale(0.95)';
+                setTimeout(() => {
+                    elements.dynamicIsland.style.transform = 'translateX(-50%) scale(1)';
+                }, 150);
+            });
+
+            // Prevent context menu on long press
+            document.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+            });
+
+            // Add subtle parallax effect
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth) * 2 - 1;
+                const y = (e.clientY / window.innerHeight) * 2 - 1;
+                
+                document.body.style.backgroundPosition = `${x * 10}px ${y * 10}px`;
+            });
+
+            console.log('🍎 iOS Portfolio initialized successfully!');
+            console.log('💡 Try these interactions:');
+            console.log('   • Swipe up from bottom for Control Center');
+            console.log('   • Pull down from top for Spotlight Search');
+            console.log('   • Long press skills to enter edit mode');
+            console.log('   • Click app icons to open modals');
+            console.log('   • Use dock icons for quick actions');
+        });
+
+        // Utility function for haptic feedback simulation
+        function simulateHaptic() {
+            if (navigator.vibrate) {
+                navigator.vibrate(10);
+            }
+            
+            // Visual feedback
+            document.body.style.transform = 'scale(0.998)';
+            setTimeout(() => {
+                document.body.style.transform = '';
+            }, 50);
+        }
+
+        // Add some Easter eggs
+        let konamiCode = [];
+        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA'];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.code);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+            
+            if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
+                // Easter egg activated!
+                document.getElementById('islandText').textContent = '🎉 Konami Code activated!';
+                document.body.style.animation = 'rainbow 2s ease-in-out';
+                
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                    document.getElementById('islandText').textContent = 'Available for work';
+                }, 3000);
+            }
+        });
+
+        // Rainbow animation for easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                25% { filter: hue-rotate(90deg); }
+                50% { filter: hue-rotate(180deg); }
+                75% { filter: hue-rotate(270deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
